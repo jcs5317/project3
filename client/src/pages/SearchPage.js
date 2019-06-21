@@ -59,7 +59,7 @@ class SearchPage extends Component {
     };
     render() {
         return (
-            <>
+            <Container>
             <Jumbotron>
 
             </Jumbotron>
@@ -86,7 +86,7 @@ class SearchPage extends Component {
                     </Col>
                 </Row>
             </Container>
-            </>
+            </Container>
           );
 
     }
