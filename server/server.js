@@ -2,11 +2,11 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 // const morgan = require("morgan");
-const routes = require("./routes");
-
 const PORT = process.env.PORT || 8080;
 const app = express();
+require("./services/passport");
 
+const routes = require("./routes");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -2,6 +2,10 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const config = require("../config");
 const db = require("../models");
+const passport = require("passport");
+const passportLocalStrategy = passport.authenticate("local", {
+  session: false
+});
 
 const tokenizer = user => {
   return jwt.sign(
@@ -13,12 +17,13 @@ const tokenizer = user => {
 };
 
 // ######## POST Routes ########
-
 router.post("/signup", function(req, res) {
   const { email, password, name } = req.body;
 
   if (!email || !password) {
-    return res.status(422).send({ error: "You must provide an email and password" });
+    return res
+      .status(422)
+      .send({ error: "You must provide an email and password" });
   }
 
   db.User.findOne({ email })
@@ -38,6 +43,10 @@ router.post("/signup", function(req, res) {
     .catch(err => {
       return next(err);
     });
+});
+
+router.post("/login", passportLocalStrategy, function(req, res) {
+  res.json({ token: tokenizer(req.user) });
 });
 
 module.exports = router;

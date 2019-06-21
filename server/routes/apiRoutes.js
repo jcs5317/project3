@@ -1,10 +1,12 @@
-var router = require("express").Router()
+var router = require("express").Router();
+const passport = require("passport");
+const passportJWTStrategy = passport.authenticate("jwt", { session: false });
 // React front end code?
 //  const App = () => {
 
 //   const APP_ID = '';
 //   const APP_KEY = '';
- 
+
 //   const [recipes, setRecipes] = useState([]);
 //   const [search, setSearch] = useState('');
 //   const [query, setQuery] = useState('chicken');
@@ -19,7 +21,12 @@ var router = require("express").Router()
 //     setRecipes(data.hits);
 //     console.log(data.hits)
 //   };
-  router.get("/test", function(req, res){
-    res.json({message: "testing api routes"})
-  })  
-module.exports = router
+router.get("/test", function(req, res) {
+  res.json({ message: "testing api routes" });
+});
+
+router.get("/supersecretroute", passportJWTStrategy, function(req, res) {
+  res.json({ message: "You have reached the secret route!" });
+});
+
+module.exports = router;
