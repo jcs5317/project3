@@ -1,5 +1,5 @@
 import React from "react";
-import Thumbnail from "../Thumbnail";
+// import Thumbnail from "../Thumbnail";
 import { Container, Row, Col } from "../Grid";
 
 // Exporting both RecipeList and RecipeListItem from this file
@@ -11,7 +11,7 @@ export function RecipeList({ children }) {
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 export function RecipeListItem({
-  thumbnail = "https://placehold.it/300x300",
+  thumbnail = [],
   title,
   ingredients,
   href,
@@ -26,7 +26,7 @@ export function RecipeListItem({
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
-            <Thumbnail src={thumbnail} />
+            <img src={thumbnail} />
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
