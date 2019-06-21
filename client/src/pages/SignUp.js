@@ -11,24 +11,25 @@ import Card from "../Components/Card";
 class SignUp extends Component {
     render() {
         return (
-          <div>
-            <Jumbotron>
-              </Jumbotron>
-            <Container>
-            <Row>
-              <Col size="md-12">
-               
-                  <Card heading="Sign Up">
-                  <h1>This is where the sign-up froms should go</h1>
-                  </Card>
-                
-              </Col>
-            </Row>
-          </Container>
-          </div>
-    
+            <div>
+                <Container>
+                    <Jumbotron>
+                    </Jumbotron>
+
+                    <Row>
+                        <Col size="md-12">
+
+                            <Card heading="Sign Up">
+                                <h1>This is where the sign-up froms should go</h1>
+                            </Card>
+
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+
         );
-      }
+    }
 
 
 }

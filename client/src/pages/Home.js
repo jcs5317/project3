@@ -66,7 +66,7 @@ class Home extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-            <Card heading="Template">
+            <Card heading="Home">
             <h1> This is where we can describe our app</h1>
             </Card>
           </Col>

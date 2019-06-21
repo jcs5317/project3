@@ -16,11 +16,11 @@ class SavedRecipes extends Component {
   componentDidMount() {
     API.getBooks()
       .then(res => this.setState(
-        { 
-          books: res.data 
+        {
+          books: res.data
         },
         console.log(res.data)
-        )
+      )
       )
       .catch(err => console.log(err));
   }
@@ -44,19 +44,19 @@ class SavedRecipes extends Component {
   render() {
     return (
       <div>
-        <Jumbotron>
-          </Jumbotron>
         <Container>
-        <Row>
-          <Col size="md-12">
-           
+          <Jumbotron>
+          </Jumbotron>
+          <Row>
+            <Col size="md-12">
+
               <Card heading="Saved Recipes">
-              <h1>This is where the saved recipes should go</h1>
+                <h1>This is where the saved recipes should go</h1>
               </Card>
-            
-          </Col>
-        </Row>
-      </Container>
+
+            </Col>
+          </Row>
+        </Container>
       </div>
 
     );
