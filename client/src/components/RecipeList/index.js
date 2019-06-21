@@ -4,11 +4,12 @@ import { Container, Row, Col } from "../Grid";
 
 // Exporting both RecipeList and RecipeListItem from this file
 
+//TODO make class smart component and export
 // RecipeList renders a bootstrap list item
 export function RecipeList({ children }) {
   return <ul className="list-group">{children}</ul>;
 }
-
+//TODO make class smart component and export
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 export function RecipeListItem({
   thumbnail = [],
@@ -25,10 +26,10 @@ export function RecipeListItem({
     <li className="list-group-item">
       <Container>
         <Row>
-          <Col size="xs-4 sm-2">
+          <Col size="xs-4 sm-4">
             <img src={thumbnail} />
           </Col>
-          <Col size="xs-8 sm-9">
+          <Col size="xs-8 sm-8">
             <h3>{title}</h3>
             <p>{calPer} calories per serving</p>
             <p>Serves {servings}</p>
