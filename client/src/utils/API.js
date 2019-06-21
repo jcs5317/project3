@@ -1,9 +1,19 @@
 import axios from "axios";
+const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
-// The getRecipes method retrieves recipes from the server
-// It accepts a "query" or term to search the recipe api for
 export default {
-  getRecipes: function(query) {
-    return axios.get("/api/recipes", { params: { q: query } });
+  searchBooks: function(query) {
+    return axios.get(BASEURL + query);
+  },
+  getBooks: function() {
+    return axios("/api/books");
+  },
+  saveBook: function(bookData) {
+    return axios.post("/api/books", bookData);
+  },
+  deleteBook: function(id) {
+    return axios.delete("api/books/" + id)
   }
 };
+
+

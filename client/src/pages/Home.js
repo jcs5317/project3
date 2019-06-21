@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
-import Card from "../components/Card";
-import SearchForm from "../components/SearchForm";
-import RecipeDetail from "../components/RecipeDetail";
+import Jumbotron from "../Components/Jumbotron";
+import Container from "../Components/Container";
+import Row from "../Components/Row";
+import Col from "../Components/Col";
+import Card from "../Components/Card";
 import API from "../utils/API";
 
 class Home extends Component {
@@ -68,47 +66,15 @@ class Home extends Component {
         </Row>
         <Row>
           <Col size="md-12">
-            <Card heading="Google Books Search">
-              <SearchForm
-                value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
+            <Card heading="Template">
+            <h1> This is where we can describe our app</h1>
             </Card>
           </Col>
         </Row>
         <Row>
           <Col size="md-12">
-            {this.state.books.length ? (
-              <Card heading="Results">
-                {this.state.books.map(book => (
-                  <RecipeDetail
-                    key={book.id}
-                    src={book.volumeInfo.imageLinks 
-                      ? book.volumeInfo.imageLinks.thumbnail
-                      : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png"}
-                    title={book.volumeInfo.title}
-                    authors={book.volumeInfo.authors
-                      ? book.volumeInfo.authors.join(", ")
-                      : "N/A"}
-                    date={book.volumeInfo.publishedDate}
-                    description={book.volumeInfo.description}
-                    link={book.volumeInfo.infoLink}
-                    handleSaveBook={() => this.handleSaveBook({ 
-                      title: book.volumeInfo.title,
-                      src: book.volumeInfo.imageLinks 
-                        ? book.volumeInfo.imageLinks.thumbnail 
-                        : "http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/book-icon.png",
-                      authors: book.volumeInfo.authors,
-                      date: book.volumeInfo.publishedDate,
-                      description: book.volumeInfo.description,
-                      link: book.volumeInfo.infoLink})}
-                  />
-                ))}
-              </Card>
-            ) : (
-              <Card heading="Search Results"></Card>
-            )}
+           
+          
           </Col>
         </Row>
       </Container>
