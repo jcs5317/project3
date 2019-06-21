@@ -1,9 +1,11 @@
 import axios from "axios";
+const edamamBaseUrl = `https://api.edamam.com/search`
+// no need to get these values server side if they aren not being stored to a DB. just display on the front end.
 
-// The getRecipes method retrieves recipes from the server
-// It accepts a "query" or term to search the recipe api for
 export default {
-  getRecipes: function(query) {
-    return axios.get("/api/recipes", { params: { q: query } });
+  getRecipes: (query) => {
+    // remove https://cors-anywhere.herokuapp.com/ when push to heroku
+    // cors issue fix
+    return axios.get(`https://cors-anywhere.herokuapp.com/${edamamBaseUrl}?q=${query}&app_id=${process.env.REACT_APP_EDM_ID}&app_key=${process.env.REACT_APP_EDM_KEY}`);
   }
 };

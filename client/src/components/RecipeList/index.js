@@ -14,7 +14,12 @@ export function RecipeListItem({
   thumbnail = "https://placehold.it/300x300",
   title,
   ingredients,
-  href
+  href,
+  calories,
+  servings,
+  calPer = (calories/servings).toFixed(2),
+  cautions,
+  healthLabels
 }) {
   return (
     <li className="list-group-item">
@@ -25,7 +30,33 @@ export function RecipeListItem({
           </Col>
           <Col size="xs-8 sm-9">
             <h3>{title}</h3>
-            <p>Ingredients: {ingredients}</p>
+            <p>{calPer} calories per serving</p>
+            <p>Serves {servings}</p>
+            <ul>
+            <p>Ingredients:</p>
+              {ingredients.map((ingredient, i) => {
+               return (
+                <li key={i}>
+                  {ingredient}
+                </li>
+               )
+              })}
+            </ul>
+              <hr/>
+            <ul>
+              Caution:
+              {cautions.map((item,i)=>{
+                return (
+                (item === 'FODMAP')?  
+                ""
+                : 
+                <li key={i}>
+                 {item}
+                </li>
+                )
+              })}
+            </ul>
+              <hr/>
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go to recipe!
             </a>
