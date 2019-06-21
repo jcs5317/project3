@@ -6,14 +6,14 @@ const Nav = props => (
       <ul className="nav navbar-nav navbar-left">
         <li>
           <a href="/" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
-            Google Books Search
+            Sign-in / Log-in
           </a>
         </li>
       </ul>
       <ul className="nav navbar-nav navbar-right">
         <li>
           <a href="/savedbooks" style={{ color: "white", textDecoration: "none", fontSize: "20px" }}>
-            Your Saved Books
+            My recipes
           </a>
         </li>
       </ul>
