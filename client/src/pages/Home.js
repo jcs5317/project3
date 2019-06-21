@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../Components/Jumbotron";
-import Container from "../Components/Container";
-import Row from "../Components/Row";
-import Col from "../Components/Col";
+
+import {Col, Container, Row} from "../Components/Grid";
 import Card from "../Components/Card";
 import API from "../utils/API";
 

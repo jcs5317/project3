@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Container from "../Components/Container";
+import {Col, Container, Row} from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
-import Row from "../Components/Row";
-import Col from "../Components/Col";
 import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
