@@ -4,6 +4,7 @@ import Row from "../Components/Row";
 import Col from "../Components/Col";
 import Jumbotron from "../Components/Jumbotron";
 import SearchForm from "../Components/SearchForm";
+import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 
@@ -60,33 +61,35 @@ class SearchPage extends Component {
     render() {
         return (
             <Container>
-            <Jumbotron>
+                <Jumbotron>
 
-            </Jumbotron>
-            
+                </Jumbotron>
+
             <Container fluid>
                 <Row>
                     <Col size="md-6">
-                      
-                            <h1>Search for Recipes</h1>
+                        <Card heading="Search for Recipes">
+                        
                        
+
                         <SearchForm>
 
                         </SearchForm>
+                        </Card>
                     </Col>
-                  
+
                     <Col size="md-6 sm-12">
-                       
-                            <h1>My Recipe List</h1>
-                            <br></br>
-                       
+
+                        <Card heading="My recipe list">
+
 
                         <h3>No Results to Display</h3>
+                        </Card>
 
                     </Col>
                 </Row>
             </Container>
-            </Container>
+            </Container >
           );
 
     }

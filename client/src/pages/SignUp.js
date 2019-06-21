@@ -20,7 +20,7 @@ class SignUp extends Component {
                         <Col size="md-12">
 
                             <Card heading="Sign Up">
-                                <h1>This is where the sign-up froms should go</h1>
+                                <h1>This is where the sign-up forms should go</h1>
                             </Card>
 
                         </Col>

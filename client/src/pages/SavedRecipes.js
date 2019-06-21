@@ -9,15 +9,15 @@ import API from "../utils/API";
 
 class SavedRecipes extends Component {
   state = {
-    books: []
+    recipes: []
   };
 
   // grab the books from /api/books
   componentDidMount() {
-    API.getBooks()
+    API.getRecipes()
       .then(res => this.setState(
         {
-          books: res.data
+          recipes: res.data
         },
         console.log(res.data)
       )
@@ -27,17 +27,17 @@ class SavedRecipes extends Component {
 
   // loads all books
   loadBooks = () => {
-    API.getBooks()
+    API.getRecipes()
       .then(res =>
-        this.setState({ books: res.data })
+        this.setState({ recipes: res.data })
       )
       .catch(err => console.log(err));
   };
 
   // deletes a book
-  handleDeleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  handleDeleteRecipe = id => {
+    API.deleteRecipe(id)
+      .then(res => this.loadRecipes())
       .catch(err => console.log(err));
   }
 
@@ -51,7 +51,7 @@ class SavedRecipes extends Component {
             <Col size="md-12">
 
               <Card heading="Saved Recipes">
-                <h1>This is where the saved recipes should go</h1>
+                <h1>This is where the saved recipes will go</h1>
               </Card>
 
             </Col>

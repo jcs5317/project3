@@ -2,17 +2,17 @@ import axios from "axios";
 const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 export default {
-  searchBooks: function(query) {
+  searchRecipes: function(query) {
     return axios.get(BASEURL + query);
   },
-  getBooks: function() {
-    return axios("/api/books");
+  getRecipes: function() {
+    return axios("/api/recipes");
   },
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
+  saveRecipes: function(recipeData) {
+    return axios.post("/api/recipes", recipeData);
   },
-  deleteBook: function(id) {
-    return axios.delete("api/books/" + id)
+  deleteRecipe: function(id) {
+    return axios.delete("api/recipes/" + id)
   }
 };
 
