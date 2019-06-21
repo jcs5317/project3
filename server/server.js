@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 // const morgan = require("morgan");
-const apiRoutes = require("./routes/apiRoutes");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Use apiRoutes
-app.use("/api", apiRoutes);
+app.use(routes);
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/recipedb", 
