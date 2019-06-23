@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+import {Link} from "react-router-dom";
+
 
 const Nav = props => (
   <div>
@@ -27,15 +29,15 @@ const Nav = props => (
       </ul>
       <ul className="nav navbar-nav navbar-right ml-auto">
         <li>
-          <button href ="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+          <Link to="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
             Sign Up
-          </button>
+          </Link>
         </li> 
         </ul>
      
-          <button href ="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+          <Link to="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
             Sign In
-          </button>
+          </Link>
        
     </nav>
   </div>

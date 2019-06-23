@@ -68,7 +68,7 @@ class SignIn extends Component {
                         <Col size="md-12">
                         <Card header="Sign In">
                             <h4 align="center">Login</h4>
-                            <form className="form-horizontal">
+                            <form action="/login" method="post"className="form-horizontal">
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto" >
                                         <label className="form-label" htmlFor="username">Username</label>

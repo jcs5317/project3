@@ -62,7 +62,7 @@ class SignUp extends Component {
                             <Card header="Sign up">
                                 <div className="SignupForm">
                                     <h4 align="center">Sign up</h4>
-                                    <form className="form-horizontal" align="center">
+                                    <form action="/login" method="post" className="form-horizontal" align="center">
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
                                                 <label className="form-label" align="center" htmlFor="username">Username</label>
