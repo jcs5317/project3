@@ -27,11 +27,16 @@ const Nav = props => (
       </ul>
       <ul className="nav navbar-nav navbar-right ml-auto">
         <li>
-          <button href="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
-            Sign Up / Log In
+          <button href ="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+            Sign Up
           </button>
         </li> 
         </ul>
+     
+          <button href ="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+            Sign In
+          </button>
+       
     </nav>
   </div>
 );

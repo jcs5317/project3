@@ -6,6 +6,7 @@ import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/savedrecipes" component={SavedRecipes} />
           <Route exact path="/searchform" component={SearchPage} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
           <Route component={NoMatch} />
         </Switch>
       </div>
