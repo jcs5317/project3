@@ -4,6 +4,7 @@ import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
+import Footer from "../Components/Footer";
 
 class SavedRecipes extends Component {
   state = {
@@ -55,7 +56,11 @@ class SavedRecipes extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer>
+          
+        </Footer>
       </div>
+      
 
     );
   }

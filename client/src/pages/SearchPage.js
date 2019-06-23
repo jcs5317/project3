@@ -10,6 +10,7 @@ import { RecipeList, RecipeListItem } from "../Components/RecipeList";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import Nav from "../Components/Nav";
+import Footer from "../Components/Footer";
 
 class SearchPage extends Component {
   state = {
@@ -120,6 +121,9 @@ class SearchPage extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer>
+          
+        </Footer>
       </div>
     );
   }

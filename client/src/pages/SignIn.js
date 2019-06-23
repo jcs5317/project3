@@ -2,9 +2,10 @@
 import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import Footer  from "../Components/Footer";
 
 class SignIn extends Component {
     constructor() {
@@ -16,7 +17,7 @@ class SignIn extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-  
+
     }
 
     handleChange(event) {
@@ -51,7 +52,7 @@ class SignIn extends Component {
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
-                
+
             })
     }
 
@@ -60,48 +61,62 @@ class SignIn extends Component {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
             return (
-                <div>
-                    <h4>Login</h4>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Username</label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
-                        </div>
-                    </form>
-                </div>
+                <>
+                <Container>
+                    <Jumbotron />
+                    <Row>
+                        <Col size="md-12">
+                        <Card header="Sign In">
+                            <h4 align="center">Login</h4>
+                            <form className="form-horizontal">
+                                <div className="form-group"  align="center">
+                                    <div className="col-1 col-ml-auto" >
+                                        <label className="form-label" htmlFor="username">Username</label>
+                                    </div>
+                                    <div className="col-3 col-mr-auto">
+                                        <input className="form-input"
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            placeholder="Username"
+                                            value={this.state.username}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group"  align="center">
+                                    <div className="col-1 col-ml-auto">
+                                        <label className="form-label" htmlFor="password">Password: </label>
+                                    </div>
+                                    <div className="col-3 col-mr-auto">
+                                        <input className="form-input"
+                                            placeholder="password"
+                                            type="password"
+                                            name="password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group"  align="center">
+                                    <div className="col-7"></div>
+                                    <button
+                                        className="btn btn-primary col-1 col-mr-auto"
+
+                                        onClick={this.handleSubmit}
+                                        type="submit">Login</button>
+                                </div>
+                            </form>
+                           </Card>
+                        </Col>
+                    </Row>
+                </Container>
+               
+                    <Footer>
+
+                    </Footer>
+                    </>
+                
             )
         }
     }
@@ -128,7 +143,7 @@ export default SignIn
 //         this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
 //         this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
 //         this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
-        
+
 //         this.onSignUp = this.onSignUp.bind(this);
 //         this.onSignIn = this.onSignIn.bind(this);
 //     }
@@ -309,8 +324,8 @@ export default SignIn
 //                                     </div>
 //                                     <br />
 //                                     <br />
-                                    
-                                   
+
+
 //                                 </Card>
 //                             </Col>
 //                         </Row>
@@ -323,7 +338,7 @@ export default SignIn
 //                 <p>Signed in</p>
 //             </div>
 //         );
-      
+
 //     }
 
 

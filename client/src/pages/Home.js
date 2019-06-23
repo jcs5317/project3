@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../Components/Jumbotron";
-
+import Footer from "../Components/Footer";
 import {Col, Container, Row} from "../Components/Grid";
 import Card from "../Components/Card";
 import API from "../utils/API";
@@ -57,6 +57,7 @@ class Home extends Component {
 
   render() {
     return (
+      <div>
       <Container>
         <Row>
           <Col size="md-12">
@@ -77,7 +78,14 @@ class Home extends Component {
           </Col>
         </Row>
       </Container>
+      
+         <Footer>
+        
+        </Footer>
+      </div>
+     
     );
+    
   }
 }
 

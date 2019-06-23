@@ -2,7 +2,7 @@
 import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
-
+import Footer from "../Components/Footer";
 import React, { Component } from 'react'
 import axios from 'axios'
 
@@ -53,61 +53,65 @@ class SignUp extends Component {
 
     render() {
         return (
-            <Container>
-                <Jumbotron />
-                <Row>
+            <>
+                <Container>
+                    <Jumbotron />
+                    <Row>
 
-                    <Col size="md-12">
-                        <Card header="Sign up">
-                        <div className="SignupForm">
-                            <h4 align="center">Sign up</h4>
-                            <form className="form-horizontal" align="center">
-                                <div className="form-group" align="center">
-                                    <div className="col-1 col-ml-auto" align="center">
-                                        <label className="form-label" align="center" htmlFor="username">Username</label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto" >
-                                        <input className="form-input"
-                                            type="text"
-                                            id="username"
-                                            name="username"
-                                            placeholder="Username"
-                                            value={this.state.username}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
+                        <Col size="md-12">
+                            <Card header="Sign up">
+                                <div className="SignupForm">
+                                    <h4 align="center">Sign up</h4>
+                                    <form className="form-horizontal" align="center">
+                                        <div className="form-group" align="center">
+                                            <div className="col-1 col-ml-auto" align="center">
+                                                <label className="form-label" align="center" htmlFor="username">Username</label>
+                                            </div>
+                                            <div className="col-3 col-mr-auto" >
+                                                <input className="form-input"
+                                                    type="text"
+                                                    id="username"
+                                                    name="username"
+                                                    placeholder="Username"
+                                                    value={this.state.username}
+                                                    onChange={this.handleChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group" align="center">
+                                            <div className="col-1 col-ml-auto">
+                                                <label className="form-label" htmlFor="password">Password: </label>
+                                            </div>
+                                            <div className="col-3 col-mr-auto">
+                                                <input className="form-input"
+                                                    placeholder="password"
+
+                                                    type="password"
+                                                    name="password"
+                                                    value={this.state.password}
+                                                    onChange={this.handleChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group ">
+                                            <div className="col-7"></div>
+                                            <button
+                                                className="btn btn-primary col-1 col-mr-auto"
+                                                onClick={this.handleSubmit}
+                                                type="submit"
+                                            >Sign up</button>
+                                        </div>
+                                    </form>
+
                                 </div>
-                                <div className="form-group" align="center">
-                                    <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="password">Password: </label>
-                                    </div>
-                                    <div className="col-3 col-mr-auto">
-                                        <input className="form-input"
-                                            placeholder="password"
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+                <Footer>
 
-                                            type="password"
-                                            name="password"
-                                            value={this.state.password}
-                                            onChange={this.handleChange}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="form-group ">
-                                    <div className="col-7"></div>
-                                    <button
-                                        className="btn btn-primary col-1 col-mr-auto"
-                                        onClick={this.handleSubmit}
-                                        type="submit"
-                                    >Sign up</button>
-                                </div>
-                            </form>
-
-                        </div>
-                        </Card>
-                    </Col>
-                </Row>
-            </Container>
-
+                </Footer>
+            </>
         )
     }
 }
