@@ -10,8 +10,9 @@ class SignUp extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
+            name: '',
             password: '',
+            email: '',
             confirmPassword: '',
 
         }
@@ -26,11 +27,13 @@ class SignUp extends Component {
     handleSubmit(event) {
         console.log('sign-up handleSubmit, username: ')
         console.log(this.state.username)
+        console.log(this.state.email)
         event.preventDefault()
 
         //request to server to add a new username/password
-        axios.post('/user/', {
+        axios.post('/user/signup', {
             username: this.state.username,
+            email: this.state.email,
             password: this.state.password
         })
             .then(response => {
@@ -57,12 +60,11 @@ class SignUp extends Component {
                 <Container>
                     <Jumbotron />
                     <Row>
-
                         <Col size="md-12">
                             <Card header="Sign up">
                                 <div className="SignupForm">
                                     <h4 align="center">Sign up</h4>
-                                    <form action="/login" method="post" className="form-horizontal" align="center">
+                                    <form  className="form-horizontal" align="center">
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
                                                 <label className="form-label" align="center" htmlFor="username">Username</label>
@@ -74,6 +76,21 @@ class SignUp extends Component {
                                                     name="username"
                                                     placeholder="Username"
                                                     value={this.state.username}
+                                                    onChange={this.handleChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="form-group" align="center">
+                                            <div className="col-1 col-ml-auto" align="center">
+                                                <label className="form-label" align="center" htmlFor="email">Email</label>
+                                            </div>
+                                            <div className="col-3 col-mr-auto" >
+                                                <input className="form-input"
+                                                    type="text"
+                                                    id="email"
+                                                    name="email"
+                                                    placeholder="Email"
+                                                    value={this.state.email}
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
