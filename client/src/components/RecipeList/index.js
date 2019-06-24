@@ -12,6 +12,7 @@ export function RecipeList({ children }) {
 //TODO make class smart component and export
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
 export function RecipeListItem({
+  index,
   thumbnail = [],
   title,
   ingredients,
@@ -20,7 +21,8 @@ export function RecipeListItem({
   servings,
   calPer = (calories/servings).toFixed(2),
   cautions,
-  healthLabels
+  healthLabels,
+  handleSaveRecipe
 }) {
   return (
     <li className="list-group-item">
@@ -61,6 +63,7 @@ export function RecipeListItem({
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go to recipe!
             </a>
+            <button onClick={(event) => handleSaveRecipe(event, index)}>Save Recipe</button>
           </Col>
         </Row>
       </Container>

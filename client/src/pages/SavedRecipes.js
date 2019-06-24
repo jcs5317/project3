@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Col, Container, Row} from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
-// import SavedBookDetail from "../Components/SavedRecipeDetail";
+import SavedRecipeDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 import Footer from "../Components/Footer";
 
@@ -11,7 +11,7 @@ class SavedRecipes extends Component {
     recipes: []
   };
 
-  // grab the books from /api/books
+  // grab the recipes from /api/recipes
   componentDidMount() {
     API.getRecipes()
       .then(res => this.setState(
@@ -24,14 +24,14 @@ class SavedRecipes extends Component {
       .catch(err => console.log(err));
   }
 
-  // loads all books
-  loadBooks = () => {
-    API.getRecipes()
-      .then(res =>
-        this.setState({ recipes: res.data })
-      )
-      .catch(err => console.log(err));
-  };
+  // loads all recipes
+  // loadRecipe = () => {
+  //   API.getRecipes()
+  //     .then(res =>
+  //       this.setState({ recipes: res.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   // deletes a book
   handleDeleteRecipe = id => {
@@ -48,11 +48,28 @@ class SavedRecipes extends Component {
           </Jumbotron>
           <Row>
             <Col size="md-12">
-
+            {this.state.recipes.length ?(<Card heading="Saved Recipes">
+                {this.state.recipes.map(recipe => (
+                    <SavedRecipeDetail
+                    key={recipe._id}
+                        title={recipe.recipe.label}
+                        href={recipe.recipe.url}
+                        // this is an array 
+                        cautions={recipe.recipe.cautions}
+                         // this is an array 
+                        healthLabels={recipe.recipe.healthLabels}
+                        calories={recipe.recipe.calories.toFixed(2)}
+                        servings={recipe.recipe.yield}
+                        // this is an array
+                        ingredients={recipe.recipe.ingredientLines}
+                        thumbnail={recipe.recipe.image} />
+                ))}
+                
+            </Card>
+            ) : (
               <Card heading="Saved Recipes">
-                <h1>This is where the saved recipes will go</h1>
               </Card>
-
+            )}
             </Col>
           </Row>
         </Container>
