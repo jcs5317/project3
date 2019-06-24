@@ -63,7 +63,7 @@ export function RecipeListItem({
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go to recipe!
             </a>
-            <button onClick={(event)=>handleSaveRecipe(event, index)}>Save Recipe</button>
+            <button onClick={(event) => handleSaveRecipe(event, index)}>Save Recipe</button>
           </Col>
         </Row>
       </Container>

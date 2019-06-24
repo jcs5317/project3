@@ -25,13 +25,13 @@ class SavedRecipes extends Component {
   }
 
   // loads all recipes
-  loadRecipe = () => {
-    API.getRecipes()
-      .then(res =>
-        this.setState({ recipes: res.data })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadRecipe = () => {
+  //   API.getRecipes()
+  //     .then(res =>
+  //       this.setState({ recipes: res.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   // deletes a book
   handleDeleteRecipe = id => {

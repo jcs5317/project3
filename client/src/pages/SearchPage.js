@@ -141,6 +141,7 @@ class SearchPage extends Component {
                         return (
                           <RecipeListItem
                             key={i}
+                            index={i}
                             title={recipe.recipe.label}
                             href={recipe.recipe.url}
                             // this is an array 
@@ -152,6 +153,7 @@ class SearchPage extends Component {
                             // this is an array
                             ingredients={recipe.recipe.ingredientLines}
                             thumbnail={recipe.recipe.image}
+                            handleSaveRecipe={this.handleSaveRecipe}
                           />
                         );
                       })}
