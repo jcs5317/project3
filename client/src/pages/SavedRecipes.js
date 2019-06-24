@@ -26,7 +26,7 @@ class SavedRecipes extends Component {
   }
 
   // loads all recipes
-  loadBooks = () => {
+  loadRecipe = () => {
     API.getRecipes()
       .then(res =>
         this.setState({ recipes: res.data })
