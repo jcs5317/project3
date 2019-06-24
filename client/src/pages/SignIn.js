@@ -31,8 +31,8 @@ class SignIn extends Component {
         console.log('handleSubmit')
 
         axios
-            .post('/login', {
-                username: this.state.username,
+            .post('/user/login', {
+                email: this.state.username,
                 password: this.state.password
             })
             .then(response => {
