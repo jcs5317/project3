@@ -7,23 +7,18 @@ export default {
     // remove https://cors-anywhere.herokuapp.com/ when push to heroku
     // cors issue fix
     return axios.get(`https://cors-anywhere.herokuapp.com/${edamamBaseUrl}?q=${query}&app_id=${process.env.REACT_APP_EDM_ID}&app_key=${process.env.REACT_APP_EDM_KEY}`);
-  }
-};
-// const BASEURL = "https://www.googleapis.com/books/v1/volumes?q=";
+  },
 
-// export default {
-//   searchRecipes: function(query) {
-//     return axios.get(BASEURL + query);
-//   },
+
 //   getRecipes: function() {
 //     return axios("/api/recipes");
 //   },
-//   saveRecipes: function(recipeData) {
-//     return axios.post("/api/recipes", recipeData);
-//   },
-//   deleteRecipe: function(id) {
-//     return axios.delete("api/recipes/" + id)
-//   }
-// };
+  saveRecipe: function(recipeData) {
+    return axios.post("http://localhost:8080/api/saved/recipe", recipeData);
+  },
+  deleteRecipe: function(id) {
+    return axios.delete("http://localhost:8080/api/saved/recipe" + id)
+  }
+};
 
 

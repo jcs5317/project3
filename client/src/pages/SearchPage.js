@@ -16,12 +16,14 @@ import SearchForm from "../Components/SearchForm";
 import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
+import SaveBtn from "../Components/SaveBtn";
 
 class SearchPage extends Component {
   state = {
     recipes: [],
     recipeSearch: "",
-    query: ""
+    query: "",
+    searchBtn: "Search"
   };
 
   handleInputChange = event => {
@@ -37,7 +39,7 @@ class SearchPage extends Component {
   getRecipes = () => {
     Actions.getRecipes(this.state.query)
       .then(res => {
-        this.setState({ recipes: res.data.hits })
+        this.setState({ recipes: res.data.hits, searchBtn: "Search" })
       })
       .catch(err => console.log(err));
   }
@@ -50,13 +52,42 @@ class SearchPage extends Component {
     if(form.checkValidity()){
       event.preventDefault();
       this.setState({
-        recipeSearch: ""
+        recipeSearch: "",
+        searchBtn: "Searching..."
       })
       this.getRecipes();
     } 
   };
 
+  //save recipe tp db
+  handleSaveRecipe = (e,i) => {
+    var save = {
+      title: this.state.recipes[i].recipe.label,
+      cautions: this.state.recipes[i].recipe.cautions,
+      healthLabels: this.state.recipes[i].recipe.healthLabels,
+      calories: this.state.recipes[i].recipe.calories,
+      servings: this.state.recipes[i].recipe.yield,
+      link: this.state.recipes[i].recipe.url,
+      imgLink: this.state.recipes[i].recipe.image,
+      ingredients: this.state.recipes[i].recipe.ingredientLines
+    }
+    
+      Actions.saveRecipe(save)
+      .then((response) => {
+        if(response) {
+          alert("Recipe Saved!")
+        } else {
+          alert("Something went wrong!")
+        }
+      })
+      .catch(err => console.log(err));
+  };
 
+  deleteRecipe = id => {
+    Actions.deleteRecipe(id)
+    .then(res => console.log(res.status))
+    .catch(err => console.log(err));
+};
 
   render() {
     return (
@@ -84,9 +115,17 @@ class SearchPage extends Component {
                         type="success"
                         className="input-lg"
                       >
-                        Search
+                        {this.state.searchBtn}
                       </Button>
                     </Col>
+                  </Row>
+                  <Row>
+                      <Col size="xs-9 sm-10">
+                      {/* <Label  class="checkbox"> */}
+                        <Input type="checkbox" />
+                        Vegitarian 
+                      {/* </Label> */}
+                      </Col>
                   </Row>
                 </Container>
               </form>
@@ -107,6 +146,7 @@ class SearchPage extends Component {
                     return (
                       <RecipeListItem
                         key={i}
+                        index={i}
                         title={recipe.recipe.label}
                         href={recipe.recipe.url}
                         // this is an array 
@@ -118,11 +158,12 @@ class SearchPage extends Component {
                         // this is an array
                         ingredients={recipe.recipe.ingredientLines}
                         thumbnail={recipe.recipe.image}
+                        handleSaveRecipe={this.handleSaveRecipe}
                       />
                     );
-                  })}
+                })}
                 </RecipeList>
-              )}
+                )}
             </Col>
           </Row>
         </Container>
