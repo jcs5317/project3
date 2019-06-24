@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 // import SearchForm from "../Components/SearchForm";
-// import Card from "../Components/Card";
+import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 // import API from "../utils/API";
 import Actions from "../utils/API";
@@ -51,8 +51,6 @@ class SearchPage extends Component {
     }
   };
 
-
-
   render() {
     return (
       <div>
@@ -94,35 +92,37 @@ class SearchPage extends Component {
               <br />
               <br />
               <hr />
-              {!this.state.recipes.length ? (
-                <h1 className="text-center">No Recipes to Display</h1>
-              ) : (
-                  <RecipeList>
-                    {this.state.recipes.map((recipe, i) => {
-                      return (
-                        <RecipeListItem
-                          key={i}
-                          title={recipe.recipe.label}
-                          href={recipe.recipe.url}
-                          // this is an array 
-                          cautions={recipe.recipe.cautions}
-                          // this is an array 
-                          healthLabels={recipe.recipe.healthLabels}
-                          calories={recipe.recipe.calories.toFixed(2)}
-                          servings={recipe.recipe.yield}
-                          // this is an array
-                          ingredients={recipe.recipe.ingredientLines}
-                          thumbnail={recipe.recipe.image}
-                        />
-                      );
-                    })}
-                  </RecipeList>
-                )}
+              <Card size="lg-12" align="center">
+                {!this.state.recipes.length ? (
+                  <h1 className="text-center">No Recipes to Display</h1>
+                ) : (
+                    <RecipeList>
+                      {this.state.recipes.map((recipe, i) => {
+                        return (
+                          <RecipeListItem
+                            key={i}
+                            title={recipe.recipe.label}
+                            href={recipe.recipe.url}
+                            // this is an array 
+                            cautions={recipe.recipe.cautions}
+                            // this is an array 
+                            healthLabels={recipe.recipe.healthLabels}
+                            calories={recipe.recipe.calories.toFixed(2)}
+                            servings={recipe.recipe.yield}
+                            // this is an array
+                            ingredients={recipe.recipe.ingredientLines}
+                            thumbnail={recipe.recipe.image}
+                          />
+                        );
+                      })}
+                    </RecipeList>
+                  )}
+              </Card>
             </Col>
           </Row>
         </Container>
         <Footer>
-          
+
         </Footer>
       </div>
     );

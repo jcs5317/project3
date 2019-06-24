@@ -29,14 +29,16 @@ const Nav = props => (
       </ul>
       <ul className="nav navbar-nav navbar-right ml-auto">
         <li>
-          <Link to="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+          <Link to="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}> <button type="button" style={{background: "green"}}>
             Sign Up
+            </button>
           </Link>
         </li> 
         </ul>
      
-          <Link to="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}>
+          <Link to="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{background: "green"}}>
             Sign In
+            </button>
           </Link>
        
     </nav>
