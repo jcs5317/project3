@@ -59,7 +59,7 @@ class SearchPage extends Component {
     } 
   };
 
-  //save recipe tp db
+  //save recipe to db
   handleSaveRecipe = (e,i) => {
     var save = {
       title: this.state.recipes[i].recipe.label,

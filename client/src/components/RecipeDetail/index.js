@@ -12,10 +12,10 @@ const RecipeDetail = props => {
         <p><strong>Servings:</strong> {props.servings}</p>
         <p>Ingredients: {props.ingredientLines}</p>
         <p><strong>Recipe Link:</strong> <a href={props.link} target={"_blank"} >{props.title}</a></p>
-        <button onClick={props.handleSaveRecipe} className="btn btn-primary save-btn" style={{ marginBottom: "30px"}}>
+        {/* <button onClick={props.handleSaveRecipe} className="btn btn-primary save-btn" style={{ marginBottom: "30px"}}>
           Save Recipe
-        </button>
-      </div>
+        </button> */}
+      </div> 
       <div className="col-md-8" style={{ float: "right", marginTop: "20px" }}>
         <p style={{ marginBottom: "30px"}}><strong>Description:</strong> {props.description}</p>
       </div>
