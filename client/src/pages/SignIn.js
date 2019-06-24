@@ -2,125 +2,131 @@
 import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
-import Footer from "../Components/Footer";
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import Footer  from "../Components/Footer";
 
-class SignUp extends Component {
+class SignIn extends Component {
     constructor() {
         super()
         this.state = {
             username: '',
             password: '',
-            confirmPassword: '',
-
+            redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+
     }
+
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
-    handleSubmit(event) {
-        console.log('sign-up handleSubmit, username: ')
-        console.log(this.state.username)
-        event.preventDefault()
 
-        //request to server to add a new username/password
-        axios.post('/user/', {
-            username: this.state.username,
-            password: this.state.password
-        })
+    handleSubmit(event) {
+        event.preventDefault()
+        console.log('handleSubmit')
+
+        axios
+            .post('/login', {
+                username: this.state.username,
+                password: this.state.password
+            })
             .then(response => {
+                console.log('login response: ')
                 console.log(response)
-                if (!response.data.errmsg) {
-                    console.log('successful signup')
-                    this.setState({ //redirect to login page
-                        redirectTo: '/login'
+                if (response.status === 200) {
+                    // update App.js state
+                    this.props.updateUser({
+                        loggedIn: true,
+                        username: response.data.username
                     })
-                } else {
-                    console.log('username already taken')
+                    // update the state to redirect to home
+                    this.setState({
+                        redirectTo: '/'
+                    })
                 }
             }).catch(error => {
-                console.log('signup error: ')
-                console.log(error)
+                console.log('login error: ')
+                console.log(error);
 
             })
     }
 
-
     render() {
-        return (
-            <>
+        if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
+            return (
+                <>
                 <Container>
                     <Jumbotron />
                     <Row>
-
                         <Col size="md-12">
-                            <Card header="Sign up">
-                                <div className="SignupForm">
-                                    <h4 align="center">Sign up</h4>
-                                    <form action="/login" method="post" className="form-horizontal" align="center">
-                                        <div className="form-group" align="center">
-                                            <div className="col-1 col-ml-auto" align="center">
-                                                <label className="form-label" align="center" htmlFor="username">Username</label>
-                                            </div>
-                                            <div className="col-3 col-mr-auto" >
-                                                <input className="form-input"
-                                                    type="text"
-                                                    id="username"
-                                                    name="username"
-                                                    placeholder="Username"
-                                                    value={this.state.username}
-                                                    onChange={this.handleChange}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group" align="center">
-                                            <div className="col-1 col-ml-auto">
-                                                <label className="form-label" htmlFor="password">Password: </label>
-                                            </div>
-                                            <div className="col-3 col-mr-auto">
-                                                <input className="form-input"
-                                                    placeholder="password"
-
-                                                    type="password"
-                                                    name="password"
-                                                    value={this.state.password}
-                                                    onChange={this.handleChange}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="form-group ">
-                                            <div className="col-7"></div>
-                                            <button
-                                                className="btn btn-primary col-1 col-mr-auto"
-                                                onClick={this.handleSubmit}
-                                                type="submit"
-                                            >Sign up</button>
-                                        </div>
-                                    </form>
-
+                        <Card header="Sign In">
+                            <h4 align="center">Sign In</h4>
+                            <form action="/login" method="post"className="form-horizontal">
+                                <div className="form-group"  align="center">
+                                    <div className="col-1 col-ml-auto" >
+                                        <label className="form-label" htmlFor="username">Username</label>
+                                    </div>
+                                    <div className="col-3 col-mr-auto">
+                                        <input className="form-input"
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            placeholder="Username"
+                                            value={this.state.username}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
                                 </div>
-                            </Card>
+                                <div className="form-group"  align="center">
+                                    <div className="col-1 col-ml-auto">
+                                        <label className="form-label" htmlFor="password">Password: </label>
+                                    </div>
+                                    <div className="col-3 col-mr-auto">
+                                        <input className="form-input"
+                                            placeholder="password"
+                                            type="password"
+                                            name="password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group"  align="center">
+                                    <div className="col-7"></div>
+                                    <button
+                                        className="btn btn-primary col-1 col-mr-auto"
+
+                                        onClick={this.handleSubmit}
+                                        type="submit">Login</button>
+                                </div>
+                            </form>
+                           </Card>
                         </Col>
                     </Row>
                 </Container>
-                <Footer>
+               
+                    <Footer>
 
-                </Footer>
-            </>
-        )
+                    </Footer>
+                    </>
+                
+            )
+        }
     }
 }
 
-export default SignUp
+export default SignIn
 
 
 
-// class SignUp extends Component {
+// class SignIn extends Component {
 //     constructor(props) {
 //         super(props);
 //         this.state = {
@@ -275,6 +281,9 @@ export default SignUp
 //         const {
 //             isLoading,
 //             token,
+//             signInError,
+//             signInEmail,
+//             signInPassword,
 //             signUpEmail,
 //             signUpPassword,
 //             signUpError,
@@ -290,35 +299,33 @@ export default SignUp
 //                         <Row>
 //                             <Col size="md-12">
 //                                 <Card>
-
-
-
-//                                     <div>
-
-//                                     </div>
-//                                     <br />
-//                                     <br />
 //                                     <div>
 //                                         {
-//                                             (signUpError) ? (
-//                                                 <p>{signUpError}</p>
+//                                             (signInError) ? (
+//                                                 <p>{signInError}</p>
 //                                             ) : (null)
 //                                         }
-//                                         <p>Sign Up</p>
+//                                         <p>Sign In</p>
 //                                         <input
 //                                             type="email"
 //                                             placeholder="Email"
-//                                             value={signUpEmail}
-//                                             onChange={this.onTextboxChangeSignUpEmail}
-//                                         /><br />
+//                                             value={signInEmail}
+//                                             onChange={this.onTextboxChangeSignInEmail}
+//                                         />
+//                                         <br />
 //                                         <input
 //                                             type="password"
 //                                             placeholder="Password"
-//                                             value={signUpPassword}
-//                                             onChange={this.onTextboxChangeSignUpPassword}
-//                                         /><br />
-//                                         <button onClick={this.onSignUp}>Sign Up</button>
+//                                             value={signInPassword}
+//                                             onChange={this.onTextboxChangeSignInPassword}
+//                                         />
+//                                         <br />
+//                                         <button onClick={this.onSignIn}>Sign In</button>
 //                                     </div>
+//                                     <br />
+//                                     <br />
+
+
 //                                 </Card>
 //                             </Col>
 //                         </Row>
@@ -336,4 +343,4 @@ export default SignUp
 
 
 // }
-// export default SignUp;
+// export default SignIn;

@@ -27,7 +27,7 @@ export function RecipeListItem({
       <Container>
         <Row>
           <Col size="xs-4 sm-4">
-            <img src={thumbnail} />
+            <img src={thumbnail} alt="recipes" />
           </Col>
           <Col size="xs-8 sm-8">
             <h3>{title}</h3>

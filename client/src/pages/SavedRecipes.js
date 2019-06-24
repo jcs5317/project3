@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Container from "../Components/Container";
+import {Col, Container, Row} from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
-import Row from "../Components/Row";
-import Col from "../Components/Col";
 import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
+import Footer from "../Components/Footer";
 
 class SavedRecipes extends Component {
   state = {
@@ -57,7 +56,11 @@ class SavedRecipes extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer>
+          
+        </Footer>
       </div>
+      
 
     );
   }

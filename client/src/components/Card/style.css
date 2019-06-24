@@ -1,3 +1,16 @@
 .heading {
     font-size: 25px;
 }
+
+.card {
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  transition: box-shadow 1s, transform 2s;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow:  15px 15px  15px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 1s;
+    transform: translate(5px, 40px);
+    transition: box-shadow 1s, transform 2s;
+}

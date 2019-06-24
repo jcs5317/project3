@@ -1,21 +1,16 @@
 import React, { Component } from "react";
-import Container from "../Components/Container";
-import Nav from "../Components/Row";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
-// import SearchForm from "../Components/SearchForm";
-import Actions from "../utils/API";
-import { RecipeList, RecipeListItem } from "../Components/RecipeList";
-// import { Container, Row, Col } from "./components/Grid";
-
-// import Container from "../Components/Container";
-import Row from "../Components/Row";
-import Col from "../Components/Col";
+import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
-import SearchForm from "../Components/SearchForm";
+// import SearchForm from "../Components/SearchForm";
 import Card from "../Components/Card";
 // import SavedBookDetail from "../Components/SavedRecipeDetail";
-import API from "../utils/API";
+// import API from "../utils/API";
+import Actions from "../utils/API";
+import { RecipeList, RecipeListItem } from "../Components/RecipeList";
+import Input from "../Components/Input";
+import Button from "../Components/Button";
+import Nav from "../Components/Nav";
+import Footer from "../Components/Footer";
 
 class SearchPage extends Component {
   state = {
@@ -47,23 +42,23 @@ class SearchPage extends Component {
     let form = document.querySelector('#recipe-form');
     form.reportValidity();
 
-    if(form.checkValidity()){
+    if (form.checkValidity()) {
       event.preventDefault();
       this.setState({
         recipeSearch: ""
       })
       this.getRecipes();
-    } 
+    }
   };
-
-
 
   render() {
     return (
       <div>
         <Nav />
-        <Jumbotron />
         <Container>
+          <Jumbotron />
+          <br />
+          <br />
           <Row>
             <Col size="md-12">
               <form id="recipe-form">
@@ -93,44 +88,46 @@ class SearchPage extends Component {
             </Col>
           </Row>
           <Row>
-           
-            <Col size="xs-12 lg-12"  align="center">
-
-            <br/>
-            <br/>
-            <hr/>
-              {!this.state.recipes.length ? (
-                <h1 className="text-center">No Recipes to Display</h1>
-              ) : (
-                <RecipeList>
-                  {this.state.recipes.map((recipe, i) => {
-                    return (
-                      <RecipeListItem
-                        key={i}
-                        title={recipe.recipe.label}
-                        href={recipe.recipe.url}
-                        // this is an array 
-                        cautions={recipe.recipe.cautions}
-                         // this is an array 
-                        healthLabels={recipe.recipe.healthLabels}
-                        calories={recipe.recipe.calories.toFixed(2)}
-                        servings={recipe.recipe.yield}
-                        // this is an array
-                        ingredients={recipe.recipe.ingredientLines}
-                        thumbnail={recipe.recipe.image}
-                      />
-                    );
-                  })}
-                </RecipeList>
-              )}
+            <Col size="xs-12 lg-12" align="center">
+              <br />
+              <br />
+              <hr />
+              <Card size="lg-12" align="center">
+                {!this.state.recipes.length ? (
+                  <h1 className="text-center">No Recipes to Display</h1>
+                ) : (
+                    <RecipeList>
+                      {this.state.recipes.map((recipe, i) => {
+                        return (
+                          <RecipeListItem
+                            key={i}
+                            title={recipe.recipe.label}
+                            href={recipe.recipe.url}
+                            // this is an array 
+                            cautions={recipe.recipe.cautions}
+                            // this is an array 
+                            healthLabels={recipe.recipe.healthLabels}
+                            calories={recipe.recipe.calories.toFixed(2)}
+                            servings={recipe.recipe.yield}
+                            // this is an array
+                            ingredients={recipe.recipe.ingredientLines}
+                            thumbnail={recipe.recipe.image}
+                          />
+                        );
+                      })}
+                    </RecipeList>
+                  )}
+              </Card>
             </Col>
           </Row>
         </Container>
+        <Footer>
+
+        </Footer>
       </div>
     );
   }
 }
-
 // export default App;
 // import Container from "../Components/Container";
 // import Row from "../Components/Row";
@@ -202,8 +199,8 @@ class SearchPage extends Component {
 //                 <Row>
 //                     <Col size="md-6">
 //                         <Card heading="Search for Recipes">
-                        
-                       
+
+
 
 //                         <SearchForm>
 
