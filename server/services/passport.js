@@ -26,6 +26,7 @@ const localLogin = new LocalStrategy(localOptions, function(
   // "username" on line 13
   User.findOne({ email })
     .then(user => {
+      console.log(user)
       // If there is no error and no user exists
       if (!user) {
         // call passports done function with false
@@ -37,6 +38,7 @@ const localLogin = new LocalStrategy(localOptions, function(
       // Using the comparePassword() method we defined in our User Schema 
       // we check if the user entered in the correct password
       user.comparePassword(password, (err, isMatch) => {
+        console.log(isMatch)
         // If there was an error we pass it along to passport
         if (err) {
           return done(err);

@@ -17,8 +17,15 @@ const tokenizer = user => {
 };
 
 // ######## POST Routes ########
+// /user/signup
+// router.post("/user/signup", function(req, res){
+//   res.json({ token: tokenizer(req.user) });
+// })
+
 router.post("/signup", function(req, res) {
-  const { email, password, name } = req.body;
+  const { email, password, username: name } = req.body;
+
+  console.log(req.body)
 
   if (!email || !password) {
     return res
