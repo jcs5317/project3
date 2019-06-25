@@ -10,10 +10,9 @@ const passportJWTStrategy = passport.authenticate("jwt", { session: false });
     // create new save recipe
     // if user is logged in 
     // get user ID
-    // just like to article in scraper
-    // look at scraper for example 
     // create reciepe with logged in user id
-    console.log("create recipe:",req.body);
+    res.json("saveRecipe")
+    console.log("recipe:",req.body);
 
     res.json(true);
     // if error or something happens item not created send res.json(false)
@@ -21,10 +20,12 @@ const passportJWTStrategy = passport.authenticate("jwt", { session: false });
 
   router.get("/saved/recipe", function(req, res){
      // get all saved recipes
+     res.json("SavedRecipeDetails")
   })  
 
   router.get("/saved/recipe/:id", function(req, res){
     // get 1 saved recipes by id
+    res.json("SavedRecipeDetails")
  })  
 
   router.delete("/saved/recipe/:id", function(req, res){
