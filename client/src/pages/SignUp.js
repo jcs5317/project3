@@ -10,7 +10,7 @@ class SignUp extends Component {
     constructor() {
         super()
         this.state = {
-            name: '',
+            username: '',
             password: '',
             email: '',
             confirmPassword: '',
@@ -37,20 +37,27 @@ class SignUp extends Component {
             password: this.state.password
         })
             .then(response => {
-                console.log(response)
+                
                 if (!response.data.errmsg) {
                     console.log('successful signup')
-                    this.setState({ //redirect to login page
-                        redirectTo: '/login'
-                    })
+                    alert("Sign Up successfull. Bon Apetite!!!!");
+                    this.props.history.push("/savedrecipes");
+                    // this.setState({ //redirect to login page
+                    //     redirectTo: '/login'
+                    // })
                 } else {
                     console.log('username already taken')
                 }
+                
             }).catch(error => {
                 console.log('signup error: ')
                 console.log(error)
 
             })
+
+            // event.preventDefault();
+            // this.setState(username: '', email: '', password: ''})
+           
     }
 
 
@@ -67,7 +74,10 @@ class SignUp extends Component {
                                     <form  className="form-horizontal" align="center">
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
-                                                <label className="form-label" align="center" htmlFor="username">Username</label>
+                                                <i className="fas fa-user-circle fa-2x"></i>
+                                                <label className="form-label" align="center"
+                                                 
+                                                htmlFor="username" >Username</label>
                                             </div>
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
@@ -82,7 +92,10 @@ class SignUp extends Component {
                                         </div>
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
+                                            <i className="fas fa-envelope-open-text fa-2x"></i>
+                                            <br />
                                                 <label className="form-label" align="center" htmlFor="email">Email</label>
+                                            
                                             </div>
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
@@ -97,12 +110,13 @@ class SignUp extends Component {
                                         </div>
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto">
+                                            <i className="fas fa-key fa-2x"></i>
+                                            <br />
                                                 <label className="form-label" htmlFor="password">Password: </label>
                                             </div>
                                             <div className="col-3 col-mr-auto">
                                                 <input className="form-input"
                                                     placeholder="password"
-
                                                     type="password"
                                                     name="password"
                                                     value={this.state.password}

@@ -40,14 +40,9 @@ class SignIn extends Component {
                 console.log(response)
                 if (response.status === 200) {
                     // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
+                    alert("Login successful");
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    this.props.history.push("/savedrecipes");
                 }
             }).catch(error => {
                 console.log('login error: ')
@@ -71,6 +66,8 @@ class SignIn extends Component {
                             <form action="/login" method="post"className="form-horizontal">
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto" >
+                                    <i className="fas fa-user-circle fa-2x"></i>
+                                    <br />
                                         <label className="form-label" htmlFor="username">Username</label>
                                     </div>
                                     <div className="col-3 col-mr-auto">
@@ -86,6 +83,8 @@ class SignIn extends Component {
                                 </div>
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto">
+                                    <i className="fas fa-key fa-2x"></i>
+                                            <br />
                                         <label className="form-label" htmlFor="password">Password: </label>
                                     </div>
                                     <div className="col-3 col-mr-auto">

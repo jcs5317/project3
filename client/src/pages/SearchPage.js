@@ -70,6 +70,7 @@ class SearchPage extends Component {
       .then((response) => {
         if(response) {
           alert("Recipe Saved!")
+          this.props.history.push("/savedrecipes");
         } else {
           alert("Something went wrong!")
         }

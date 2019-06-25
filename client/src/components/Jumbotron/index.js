@@ -8,11 +8,6 @@ function Jumbotron() {
       <a target="_blank" rel="noopener noreferrer" href="http://www.edamam.com/">
         Powered by Edamam
       </a>
-      and 
-      <a target="_blank" rel="noopener noreferrer" href="http://www.whisk.com">
-        by Whisk
-      </a>
-   
     </div>
   );
 }
