@@ -38,7 +38,12 @@ class SignUp extends Component {
         })
             .then(response => {
                 
-                if (!response.data.errmsg) {
+                if(this.state.password < 6){
+                    alert("Password should be at least 6 characters long");
+                } else if 
+                
+
+                 (!response.data.errmsg) {
                     console.log('successful signup')
                     alert("Sign Up successfull. Bon Apetite!!!!");
                     this.props.history.push("/savedrecipes");
@@ -48,16 +53,16 @@ class SignUp extends Component {
                 } else {
                     console.log('username already taken')
                 }
-                
+
             }).catch(error => {
                 console.log('signup error: ')
                 console.log(error)
 
             })
 
-            // event.preventDefault();
-            // this.setState(username: '', email: '', password: ''})
-           
+        event.preventDefault();
+        this.setState({username: '', email: '', password: ''})
+
     }
 
 
@@ -71,14 +76,13 @@ class SignUp extends Component {
                             <Card header="Sign up">
                                 <div className="SignupForm">
                                     <h4 align="center">Sign up</h4>
-                                    <form  className="form-horizontal" align="center">
+                                    <form className="form-horizontal" align="center">    
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
+
                                                 <i className="fas fa-user-circle fa-2x"></i>
-                                                <label className="form-label" align="center"
-                                                 
-                                                htmlFor="username" >Username</label>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
                                                     type="text"
@@ -89,14 +93,12 @@ class SignUp extends Component {
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
-                                        </div>
+                                        </div>       
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
-                                            <i className="fas fa-envelope-open-text fa-2x"></i>
-                                            <br />
-                                                <label className="form-label" align="center" htmlFor="email">Email</label>
-                                            
+                                                <i className="fas fa-envelope-open-text fa-2x"></i>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
                                                     type="text"
@@ -110,10 +112,9 @@ class SignUp extends Component {
                                         </div>
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto">
-                                            <i className="fas fa-key fa-2x"></i>
-                                            <br />
-                                                <label className="form-label" htmlFor="password">Password: </label>
+                                                <i className="fas fa-key fa-2x"></i>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto">
                                                 <input className="form-input"
                                                     placeholder="password"

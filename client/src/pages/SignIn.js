@@ -45,10 +45,13 @@ class SignIn extends Component {
                     this.props.history.push("/savedrecipes");
                 }
             }).catch(error => {
+                alert("Please Sign Up")
                 console.log('login error: ')
                 console.log(error);
 
             })
+            event.preventDefault();
+            this.setState({email: '', password: ''})
     }
 
     render() {
@@ -66,10 +69,12 @@ class SignIn extends Component {
                             <form action="/login" method="post"className="form-horizontal">
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto" >
-                                    <i className="fas fa-user-circle fa-2x"></i>
+                                   
                                     <br />
-                                        <label className="form-label" htmlFor="username">Username</label>
+                                
+                                    <i className="fas fa-envelope-open-text fa-2x"></i>
                                     </div>
+                                         <br />
                                     <div className="col-3 col-mr-auto">
                                         <input className="form-input"
                                             type="text"
@@ -83,10 +88,10 @@ class SignIn extends Component {
                                 </div>
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto">
+                                    
                                     <i className="fas fa-key fa-2x"></i>
-                                            <br />
-                                        <label className="form-label" htmlFor="password">Password: </label>
                                     </div>
+                                            <br />
                                     <div className="col-3 col-mr-auto">
                                         <input className="form-input"
                                             placeholder="password"
