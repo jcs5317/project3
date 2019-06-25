@@ -11,8 +11,8 @@ class SignIn extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
-            password: '',
+            username: 'tuckerb112@gmail.com',
+            password: 'kittens',
             redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -35,19 +35,12 @@ class SignIn extends Component {
                 email: this.state.username,
                 password: this.state.password
             })
-            .then(response => {
+            .then(({data, status}) => {
                 console.log('login response: ')
-                console.log(response)
-                if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
+                if (status === 200) {
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    window.localStorage.setItem("user-token", data.token);
+                    this.props.history.push("/savedrecipes");
                 }
             }).catch(error => {
                 console.log('login error: ')
