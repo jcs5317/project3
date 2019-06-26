@@ -10,7 +10,7 @@ class Footer extends Component{
             <div className="footer">  
                 <Navbar style={{ marginBottom: "40px", backgroundColor: "red", height: "75px" }}>
                     <Container>
-                        <NavbarBrand style={{color: "white", textAlign: "center"}}>Created by Alapan   Jordan and Marco</NavbarBrand>
+                        <NavbarBrand style={{color: "white", align: "center"}}>Created by Alapan   Jordan and Marco</NavbarBrand>
                     </Container>
                 </Navbar>
             </div>

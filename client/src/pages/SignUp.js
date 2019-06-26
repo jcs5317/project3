@@ -10,11 +10,9 @@ class SignUp extends Component {
     constructor() {
         super()
         this.state = {
-            name: '',
+            username: '',
             password: '',
-            email: '',
-            confirmPassword: '',
-
+            email: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -37,20 +35,30 @@ class SignUp extends Component {
             password: this.state.password
         })
             .then(response => {
-                console.log(response)
-                if (!response.data.errmsg) {
+                
+               if    (!response.data.errmsg) {
                     console.log('successful signup')
-                    this.setState({ //redirect to login page
-                        redirectTo: '/login'
-                    })
+                    alert("Sign Up successfull. Bon Apetite!!!!");
+                    this.props.history.push("/savedrecipes");
+                    // this.setState({ //redirect to login page
+                    //     redirectTo: '/login'
+                    // })
                 } else {
                     console.log('username already taken')
+                    alert("Name is already taken")
                 }
+
             }).catch(error => {
                 console.log('signup error: ')
                 console.log(error)
+                alert("User name/Email already taken")
+                
 
             })
+
+        event.preventDefault();
+        this.setState({username: '', email: '', password: ''})
+
     }
 
 
@@ -64,11 +72,13 @@ class SignUp extends Component {
                             <Card header="Sign up">
                                 <div className="SignupForm">
                                     <h4 align="center">Sign up</h4>
-                                    <form  className="form-horizontal" align="center">
+                                    <form className="form-horizontal" align="center">    
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
-                                                <label className="form-label" align="center" htmlFor="username">Username</label>
+
+                                                <i className="fas fa-user-circle fa-2x"></i>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
                                                     type="text"
@@ -79,11 +89,12 @@ class SignUp extends Component {
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
-                                        </div>
+                                        </div>       
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto" align="center">
-                                                <label className="form-label" align="center" htmlFor="email">Email</label>
+                                                <i className="fas fa-envelope-open-text fa-2x"></i>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto" >
                                                 <input className="form-input"
                                                     type="text"
@@ -97,12 +108,12 @@ class SignUp extends Component {
                                         </div>
                                         <div className="form-group" align="center">
                                             <div className="col-1 col-ml-auto">
-                                                <label className="form-label" htmlFor="password">Password: </label>
+                                                <i className="fas fa-key fa-2x"></i>
                                             </div>
+                                            <br />
                                             <div className="col-3 col-mr-auto">
                                                 <input className="form-input"
                                                     placeholder="password"
-
                                                     type="password"
                                                     name="password"
                                                     value={this.state.password}
