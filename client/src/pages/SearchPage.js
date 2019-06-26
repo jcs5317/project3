@@ -17,7 +17,8 @@ class SearchPage extends Component {
     recipes: [],
     recipeSearch: "",
     query: "",
-    searchBtn: "Search"
+    searchBtn: "Search",
+    healthLabels: ""
   };
 
   handleInputChange = event => {
@@ -26,17 +27,22 @@ class SearchPage extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-      query: value
+      query: value,
+      healthLabels: value
     });
   };
 
   getRecipes = () => {
-    Actions.getRecipes(this.state.query)
+    Actions.getRecipes(this.state.query, this.state.healthLabels)
       .then(res => {
         this.setState({ recipes: res.data.hits, searchBtn: "Search" })
       })
       .catch(err => console.log(err));
-  }
+  };
+
+handleSelect = event => {
+  this.setState({ healthLabels: event.target.value });
+};
 
   handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
@@ -116,11 +122,20 @@ class SearchPage extends Component {
                     </Col>
                   </Row>
                   <Row>
-                      <Col size="xs-9 sm-10">
-                      {/* <Label  class="checkbox"> */}
-                        <Input type="checkbox" />
-                        Vegitarian 
-                      {/* </Label> */}
+                      <Col size="">
+                        Health needs: 
+                      <select value={this.state.healthLabels} onChange={this.handleSelect}>
+                        <option></option>
+                        <option>vegan</option>
+                        <option>vegetarian</option>
+                        <option>low-fat</option>
+                        <option>low-carb</option>
+                        <option>high-protein</option>
+                        <option>sugar-conscious</option>
+                        <option>tree-nut-free</option>
+                        <option>peanut-free</option>
+                        <option>alcohol-free</option>
+                      </select>
                       </Col>
                   </Row>
                 </Container>
