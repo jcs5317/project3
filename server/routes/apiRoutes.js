@@ -40,7 +40,7 @@ router.get("/saved/recipe", passportJWTStrategy, function(req, res) {
 });
 
 router.get("/saved/recipe/:id", function(req, res) {
-  // get 1 saved recipes by id
+  
 });
 
 router.delete("/saved/recipe/:id", function(req, res) {
