@@ -16,11 +16,13 @@ const tokenizer = user => {
   );
 };
 
-// ######## POST Routes ########
-// /user/signup
-// router.post("/user/signup", function(req, res){
-//   res.json({ token: tokenizer(req.user) });
-// })
+router.get(
+  "/searchpage",
+  passport.authenticate("jwt", {session: false}),
+  (req, res) => {
+    
+  }
+)
 
 router.post("/signup", function(req, res) {
   const { email, password, username: name } = req.body;

@@ -15,7 +15,7 @@ router.post("/saved/recipe", passportJWTStrategy, function(req, res) {
       res.json(recipe);
     })
     .catch(function(err) {
-      res.status(400).json({ error: err });
+      res.status(400).json({ error:"You must be logged in to search for recipes" });
     });
   // create new save recipe
   // if user is logged in
@@ -40,7 +40,7 @@ router.get("/saved/recipe", passportJWTStrategy, function(req, res) {
 });
 
 router.get("/saved/recipe/:id", function(req, res) {
-  // get 1 saved recipes by id
+  
 });
 
 router.delete("/saved/recipe/:id", function(req, res) {

@@ -25,9 +25,13 @@ export default {
   //     return axios("/api/recipes");
   //   },
   saveRecipe: function(recipeData) {
-    return axios.post("/api/saved/recipe", recipeData);
-  },
-  deleteRecipe: function(id) {
-    return axios.delete("/api/saved/recipe" + id);
-  }
-};
+    return axios.post("/api/saved/recipe", recipeData,  {
+      headers: {
+        Authorization: window.localStorage.getItem("user-token")
+      }
+  });
+}
+  // deleteRecipe: function(id) {
+  //   return axios.delete("/api/saved/recipe" + id);
+  // }
+}
