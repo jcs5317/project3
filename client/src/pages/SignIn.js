@@ -11,8 +11,8 @@ class SignIn extends Component {
     constructor() {
         super()
         this.state = {
-            username: 'tuckerb112@gmail.com',
-            password: 'kittens',
+            username: '',
+            password: '',
             redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -41,6 +41,7 @@ class SignIn extends Component {
                     // update the state to redirect to home
                     window.localStorage.setItem("user-token", data.token);
                     this.props.history.push("/savedrecipes");
+                    alert("Login succesful")
                 }
             }).catch(error => {
                 alert("Please Sign Up")

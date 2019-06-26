@@ -12,9 +12,7 @@ class SignUp extends Component {
         this.state = {
             username: '',
             password: '',
-            email: '',
-            confirmPassword: '',
-
+            email: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -38,12 +36,7 @@ class SignUp extends Component {
         })
             .then(response => {
                 
-                if(this.state.password < 6){
-                    alert("Password should be at least 6 characters long");
-                } else if 
-                
-
-                 (!response.data.errmsg) {
+               if    (!response.data.errmsg) {
                     console.log('successful signup')
                     alert("Sign Up successfull. Bon Apetite!!!!");
                     this.props.history.push("/savedrecipes");
@@ -52,11 +45,14 @@ class SignUp extends Component {
                     // })
                 } else {
                     console.log('username already taken')
+                    alert("Name is already taken")
                 }
 
             }).catch(error => {
                 console.log('signup error: ')
                 console.log(error)
+                alert("User name/Email already taken")
+                
 
             })
 
