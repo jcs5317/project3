@@ -20,6 +20,7 @@ class SearchPage extends Component {
     searchBtn: "Search",
     healthLabels: ""
   };
+  
 
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
@@ -69,8 +70,10 @@ handleSelect = event => {
       servings: this.state.recipes[i].recipe.yield,
       link: this.state.recipes[i].recipe.url,
       imgLink: this.state.recipes[i].recipe.image,
-      ingredients: this.state.recipes[i].recipe.ingredientLines
+      ingredients: this.state.recipes[i].recipe.ingredients
     }
+    console.log(this.state.recipes[i].recipe.ingredients)
+    
     
       Actions.saveRecipe(save)
       .then((response) => {
@@ -154,7 +157,9 @@ handleSelect = event => {
                 ) : (
                     <RecipeList>
                       {this.state.recipes.map((recipe, i) => {
+                        console.log(recipe)
                         return (
+                          
                           <RecipeListItem
                             key={i}
                             index={i}
@@ -167,7 +172,7 @@ handleSelect = event => {
                             calories={recipe.recipe.calories.toFixed(2)}
                             servings={recipe.recipe.yield}
                             // this is an array
-                            ingredients={recipe.recipe.ingredientLines}
+                            ingredients={recipe.ingredients}
                             thumbnail={recipe.recipe.image}
                             handleSaveRecipe={this.handleSaveRecipe}
                           />
