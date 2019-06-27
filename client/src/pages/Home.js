@@ -54,6 +54,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+      <Nav signedIn={true} />
         <Container>
           <Row>
             <Col size="md-12">
