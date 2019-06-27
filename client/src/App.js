@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./Components/Nav";
 import Home from "./pages/Home";
 import SavedRecipes from "./pages/SavedRecipes";
 import NoMatch from "./pages/NoMatch";
@@ -19,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Nav />
+       
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/savedrecipes" component={SavedRecipes} />

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Footer  from "../Components/Footer";
+import Nav from "../Components/Nav";
 
 class SignIn extends Component {
     constructor() {
@@ -61,6 +62,7 @@ class SignIn extends Component {
         } else {
             return (
                 <>
+                <Nav signIn={false} />
                 <Container>
                     <Jumbotron />
                     <Row>
