@@ -41,6 +41,7 @@ class SignUp extends Component {
                     console.log('successful signup')
                     alert("Sign Up successfull. Bon Apetite!!!!");
                     this.props.history.push("/savedrecipes");
+                    window.sessionStorage.setItem("user-token", response.data.token);
                     // this.setState({ //redirect to login page
                     //     redirectTo: '/login'
                     // })
