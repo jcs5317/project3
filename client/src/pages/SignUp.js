@@ -3,8 +3,9 @@ import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Card from "../Components/Card";
 import Footer from "../Components/Footer";
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
+import Nav from "../Components/Nav";
 
 class SignUp extends Component {
     constructor() {
@@ -40,6 +41,7 @@ class SignUp extends Component {
                     console.log('successful signup')
                     alert("Sign Up successfull. Bon Apetite!!!!");
                     this.props.history.push("/savedrecipes");
+                    window.sessionStorage.setItem("user-token", response.data.token);
                     // this.setState({ //redirect to login page
                     //     redirectTo: '/login'
                     // })
@@ -65,6 +67,7 @@ class SignUp extends Component {
     render() {
         return (
             <>
+             <Nav signedIn={false} />
                 <Container>
                     <Jumbotron />
                     <Row>

@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "./Components/Nav";
 import Home from "./pages/Home";
 import SavedRecipes from "./pages/SavedRecipes";
 import NoMatch from "./pages/NoMatch";
@@ -19,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Nav />
+       
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/savedrecipes" component={SavedRecipes} />
@@ -27,7 +26,7 @@ const App = () => {
           <AuthenticatedRoute exact path="/savedrecipes" component={SavedRecipes}/>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/logout" component={LogOut} />
+          <Route exact path="/" component={LogOut} />
           <Route component={NoMatch} />
         </Switch>
       </div>

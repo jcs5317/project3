@@ -34,7 +34,6 @@ router.get("/logout", function(req, res) {
 
 router.post("/signup", function(req, res) {
   const { email, password, username: name } = req.body;
-  sessionStorage.clear();
 
   console.log(req.body)
 
