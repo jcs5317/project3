@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../Components/Jumbotron";
 import Footer from "../Components/Footer";
-import {Col, Container, Row} from "../Components/Grid";
+import { Col, Container, Row } from "../Components/Grid";
 import Card from "../Components/Card";
 
 // import API from "../utils/API";
@@ -53,32 +53,32 @@ class Home extends Component {
   render() {
     return (
       <div>
-      <Container>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron />
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
-            <Card className="plot" heading="Home">
-            <h1> This is where we can describe our app</h1>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">        
-          </Col>
-        </Row>
-      </Container>
-      
-         <Footer>
-        
+        <Container>
+          <Row>
+            <Col size="md-12">
+              <Jumbotron />
+            </Col>
+          </Row>
+          <Row>
+            <Col size="md-12">
+              <Card className="plot" heading="Home">
+                <h4> This app is a simple and easy to use platform for users to search and find recipes of all their delicacies. Not only that, but users will also be able to find out recipes of foods that will be tailored to their personal requirements such as allergies, vegetarian/non-vegetarian needs, and lifestyle choices.</h4>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col size="md-12">
+            </Col>
+          </Row>
+        </Container>
+
+        <Footer>
+
         </Footer>
       </div>
-     
+
     );
-    
+
   }
 }
 
