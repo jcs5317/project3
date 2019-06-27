@@ -52,22 +52,23 @@ class SavedRecipes extends Component {
           <Jumbotron />
           <Row>
             <Col size="md-12">
+              {console.log(this.state.recipes)}
               {this.state.recipes.length ? (
                 <Card heading="Saved Recipes">
                   {this.state.recipes.map(recipe => (
                     <SavedRecipeDetail
                       key={recipe._id}
                       title={recipe.title}
-                      href={recipe.url}
+                      href={recipe.link}
                       // this is an array
                       cautions={recipe.cautions}
                       // this is an array
                       healthLabels={recipe.healthLabels}
                       calories={parseFloat(recipe.calories).toFixed(2)}
-                      servings={recipe.yield}
+                      servings={recipe.servings}
                       // this is an array
                       ingredients={recipe.ingredients}
-                      thumbnail={recipe.image}
+                      thumbnail={recipe.imgLink}
                     />
                   ))}
                 </Card>

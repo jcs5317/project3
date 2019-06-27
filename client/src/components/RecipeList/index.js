@@ -25,6 +25,7 @@ export function RecipeListItem({
   handleSaveRecipe
 }) {
   return (
+    
     <li className="list-group-item">
       <Container>
         <Row>
@@ -34,30 +35,20 @@ export function RecipeListItem({
           <Col size="xs-8 sm-8">
             <h3>{title}</h3>
             <p>{calPer} calories per serving</p>
-            <p>Serves {servings}</p>
+            <p>Serves: {servings}</p>
             <ul>
             <p>Ingredients: {ingredients}</p>
-          
             </ul>
               <hr/>
             <ul>
-              Caution:
-              {cautions.map((item,i)=>{
-                return (
-                (item === 'FODMAP')?  
-                ""
-                : 
-                <li key={i}>
-                 {item}
-                </li>
-                )
-              })}
+              <p>Caution: {cautions}</p>
             </ul>
               <hr/>
             <a rel="noreferrer noopener" target="_blank" href={href}>
               Go to recipe!
             </a>
             <button onClick={(event) => handleSaveRecipe(event, index)}>Save Recipe</button>
+            
           </Col>
         </Row>
       </Container>
