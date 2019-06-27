@@ -36,14 +36,8 @@ export function RecipeListItem({
             <p>{calPer} calories per serving</p>
             <p>Serves {servings}</p>
             <ul>
-            <p>Ingredients:</p>
-              {ingredients.map((ingredient, i) => {
-               return (
-                <li key={i}>
-                  {ingredient}
-                </li>
-               )
-              })}
+            <p>Ingredients: {ingredients}</p>
+          
             </ul>
               <hr/>
             <ul>

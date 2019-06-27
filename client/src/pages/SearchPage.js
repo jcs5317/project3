@@ -17,26 +17,32 @@ class SearchPage extends Component {
     recipes: [],
     recipeSearch: "",
     query: "",
-    searchBtn: "Search"
+    searchBtn: "Search",
+    healthLabels: ""
   };
+
 
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
-      query: value
+      [name]: value
     });
+
   };
 
   getRecipes = () => {
-    Actions.getRecipes(this.state.query)
+    Actions.getRecipes(this.state.recipeSearch, this.state.healthLabels)
       .then(res => {
         this.setState({ recipes: res.data.hits, searchBtn: "Search" })
       })
       .catch(err => console.log(err));
-  }
+  };
+
+  handleSelect = event => {
+    this.setState({ healthLabels: event.target.value });
+  };
 
   handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
@@ -54,7 +60,7 @@ class SearchPage extends Component {
   };
 
   //save recipe to db
-  handleSaveRecipe = (e,i) => {
+  handleSaveRecipe = (e, i) => {
     var save = {
       title: this.state.recipes[i].recipe.label,
       cautions: this.state.recipes[i].recipe.cautions,
@@ -65,10 +71,12 @@ class SearchPage extends Component {
       imgLink: this.state.recipes[i].recipe.image,
       ingredients: this.state.recipes[i].recipe.ingredientLines
     }
-    
-      Actions.saveRecipe(save)
+    console.log(this.state.recipes[i].recipe.ingredients)
+
+
+    Actions.saveRecipe(save)
       .then((response) => {
-        if(response) {
+        if (response) {
           alert("Recipe Saved!")
           this.props.history.push("/savedrecipes");
         } else {
@@ -80,9 +88,9 @@ class SearchPage extends Component {
 
   deleteRecipe = id => {
     Actions.deleteRecipe(id)
-    .then(res => console.log(res.status))
-    .catch(err => console.log(err));
-};
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -117,12 +125,21 @@ class SearchPage extends Component {
                     </Col>
                   </Row>
                   <Row>
-                      <Col size="xs-9 sm-10">
-                      {/* <Label  class="checkbox"> */}
-                        <Input type="checkbox" />
-                        Vegitarian 
-                      {/* </Label> */}
-                      </Col>
+                    <Col size="">
+                      Health needs:
+                      <select value={this.state.healthLabels} onChange={this.handleSelect}>
+                        <option></option>
+                        <option>vegan</option>
+                        <option>vegetarian</option>
+                        <option>low-fat</option>
+                        <option>low-carb</option>
+                        <option>high-protein</option>
+                        <option>sugar-conscious</option>
+                        <option>tree-nut-free</option>
+                        <option>peanut-free</option>
+                        <option>alcohol-free</option>
+                      </select>
+                    </Col>
                   </Row>
                 </Container>
               </form>
@@ -139,7 +156,9 @@ class SearchPage extends Component {
                 ) : (
                     <RecipeList>
                       {this.state.recipes.map((recipe, i) => {
+                        console.log(recipe)
                         return (
+
                           <RecipeListItem
                             key={i}
                             index={i}
@@ -152,7 +171,7 @@ class SearchPage extends Component {
                             calories={recipe.recipe.calories.toFixed(2)}
                             servings={recipe.recipe.yield}
                             // this is an array
-                            ingredients={recipe.recipe.ingredientLines}
+                            ingredients={recipe.recipe.ingredientLines.toString()}
                             thumbnail={recipe.recipe.image}
                             handleSaveRecipe={this.handleSaveRecipe}
                           />

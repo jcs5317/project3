@@ -66,7 +66,7 @@ class SavedRecipes extends Component {
                       calories={parseFloat(recipe.calories).toFixed(2)}
                       servings={recipe.yield}
                       // this is an array
-                      ingredients={recipe.ingredientLines}
+                      ingredients={recipe.ingredients}
                       thumbnail={recipe.image}
                     />
                   ))}
