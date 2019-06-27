@@ -20,30 +20,29 @@ class SearchPage extends Component {
     searchBtn: "Search",
     healthLabels: ""
   };
-  
+
 
   handleInputChange = event => {
     // Destructure the name and value properties off of event.target
     // Update the appropriate state
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
-      query: value,
-      healthLabels: value
+      [name]: value
     });
+
   };
 
   getRecipes = () => {
-    Actions.getRecipes(this.state.query, this.state.healthLabels)
+    Actions.getRecipes(this.state.recipeSearch, this.state.healthLabels)
       .then(res => {
         this.setState({ recipes: res.data.hits, searchBtn: "Search" })
       })
       .catch(err => console.log(err));
   };
 
-handleSelect = event => {
-  this.setState({ healthLabels: event.target.value });
-};
+  handleSelect = event => {
+    this.setState({ healthLabels: event.target.value });
+  };
 
   handleFormSubmit = event => {
     // When the form is submitted, prevent its default behavior, get recipes update the recipes state
@@ -61,7 +60,7 @@ handleSelect = event => {
   };
 
   //save recipe to db
-  handleSaveRecipe = (e,i) => {
+  handleSaveRecipe = (e, i) => {
     var save = {
       title: this.state.recipes[i].recipe.label,
       cautions: this.state.recipes[i].recipe.cautions,
@@ -70,14 +69,14 @@ handleSelect = event => {
       servings: this.state.recipes[i].recipe.yield,
       link: this.state.recipes[i].recipe.url,
       imgLink: this.state.recipes[i].recipe.image,
-      ingredients: this.state.recipes[i].recipe.ingredients
+      ingredients: this.state.recipes[i].recipe.ingredientLines
     }
     console.log(this.state.recipes[i].recipe.ingredients)
-    
-    
-      Actions.saveRecipe(save)
+
+
+    Actions.saveRecipe(save)
       .then((response) => {
-        if(response) {
+        if (response) {
           alert("Recipe Saved!")
           this.props.history.push("/savedrecipes");
         } else {
@@ -89,9 +88,9 @@ handleSelect = event => {
 
   deleteRecipe = id => {
     Actions.deleteRecipe(id)
-    .then(res => console.log(res.status))
-    .catch(err => console.log(err));
-};
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -126,8 +125,8 @@ handleSelect = event => {
                     </Col>
                   </Row>
                   <Row>
-                      <Col size="">
-                        Health needs: 
+                    <Col size="">
+                      Health needs:
                       <select value={this.state.healthLabels} onChange={this.handleSelect}>
                         <option></option>
                         <option>vegan</option>
@@ -140,7 +139,7 @@ handleSelect = event => {
                         <option>peanut-free</option>
                         <option>alcohol-free</option>
                       </select>
-                      </Col>
+                    </Col>
                   </Row>
                 </Container>
               </form>
@@ -159,7 +158,7 @@ handleSelect = event => {
                       {this.state.recipes.map((recipe, i) => {
                         console.log(recipe)
                         return (
-                          
+
                           <RecipeListItem
                             key={i}
                             index={i}
@@ -172,7 +171,7 @@ handleSelect = event => {
                             calories={recipe.recipe.calories.toFixed(2)}
                             servings={recipe.recipe.yield}
                             // this is an array
-                            ingredients={recipe.ingredients}
+                            ingredients={recipe.recipe.ingredientLines.toString()}
                             thumbnail={recipe.recipe.image}
                             handleSaveRecipe={this.handleSaveRecipe}
                           />
