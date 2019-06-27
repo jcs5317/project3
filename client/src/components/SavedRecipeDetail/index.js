@@ -12,12 +12,14 @@ const SavedRecipeDetail = props => {
         <p><strong>Cautions:</strong> {props.cautions.join(", ")}</p>
         <p><strong>Servings:</strong> {props.servings}</p>
         <p><strong>Recipe Link:</strong> {props.href}</p>
-        {console.log(props)}
         
-        <button onClick={props.handelDeleteRecipe} className="btn btn-warning delete-btn" style={{ marginBottom: "30px"}}>
+        <button onClick={props.handelDeleteRecipe} className="btn btn-warning delete-btn" style={
+        
+        { marginBottom: "30px"}}>
           Delete
         </button>
-        <button onClick={props.handleDeleteBook} className="btn btn-safe note-btn" style={{ marginBottom: "30px"}}>
+        
+        <button onClick={props.handleNotes} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
           Notes
         </button>
       </div>

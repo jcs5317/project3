@@ -34,8 +34,13 @@ export default {
         Authorization: window.sessionStorage.getItem("user-token")
       }
     });
+  },
+
+  deleteRecipe: function(id) {
+    return axios.delete("/api/saved/recipe" + id, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("user-token")
+      }
+    });
   }
-  // deleteRecipe: function(id) {
-  //   return axios.delete("/api/saved/recipe" + id);
-  // }
 }
