@@ -5,7 +5,39 @@
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
      transition: box-shadow 2s, transform 3s;
      background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
-     background-size: cover;    
+     transition: 1000ms;
+     background-size: cover;   
+}
+
+.jumbotron:hover {
+    background-image: url("http://www.ktoturkey.com/assets/upload/pagecontent/yemekeng-jpg09012017124805.jpg");
+    transition: 1000ms;
+    background-size: cover; 
+}
+  
+  
+@keyframes rotateInUpLeft {
+    from {
+      transform-origin: left bottom;
+      transform: rotate3d(0, 0, 1, 45deg);
+      opacity: 0;
+    }
+  
+    to {
+      transform-origin: left bottom;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+  
+  .rotateInUpLeft {
+    animation-name: rotateInUpLeft;
+  }
+  
+
+img {
+width: 80%;
+height: 60%;
 }
 
 

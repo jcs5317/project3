@@ -65,16 +65,22 @@ class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="md-12">
+          <Col size="md-20">
             <Card heading="Home">
-            <h1> This is where we can describe our app</h1>
+              <Row >
+                <Col size="md-4">
+              <img src="http://conquerthecrux.com/wp-content/uploads/2014/03/Healthy-Living-1.jpg"></img>
+              </Col>
+              <Col size="md-12">
+
+            <h5> This app is a simple and easy platform for users to look up their favorite recipes and all the ingredients used in the recipes. This will allow the users to not only figure out how to prepare their favorite delicacies, but also to make informed decisions about their personal needs, such as allergies, vegetarian/non-vegetarian needs, and health/lifestyle related problems.</h5>
+            </Col>
+            </Row>
             </Card>
           </Col>
         </Row>
         <Row>
-          <Col size="md-12">
-           
-          
+          <Col size="md-12">        
           </Col>
         </Row>
       </Container>
