@@ -15,16 +15,3 @@
     transition: box-shadow 1s, transform 2s;
 }
 
-
-img {
-  margin-right: auto;
-  margin-left: 120%;
-  width: 75%;
-  height: 100%
-}
-
-
-body
-{
-  background-color: black; 
-}
