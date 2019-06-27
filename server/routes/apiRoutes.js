@@ -31,8 +31,8 @@ router.post("/saved/recipe", passportJWTStrategy, function(req, res) {
 router.get("/saved/recipe", passportJWTStrategy, function(req, res) {
   // get all saved recipes
   db.Recipe.find({ user: req.user.id })
-    .then(dbRecipes => {
-      res.json(dbRecipes);
+    .then(recipedb => {
+      res.json(recipedb);
     })
     .catch(err => {
       res.status(400).json({ error: err });
