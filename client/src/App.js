@@ -26,7 +26,7 @@ const App = () => {
           <AuthenticatedRoute exact path="/savedrecipes" component={SavedRecipes}/>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/logout" component={LogOut} />
+          <Route exact path="/" component={LogOut} />
           <Route component={NoMatch} />
         </Switch>
       </div>

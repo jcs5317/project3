@@ -54,7 +54,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-      <Nav signedIn={true} />
+      <Nav signedIn={false} />
         <Container>
           <Row>
             <Col size="md-12">

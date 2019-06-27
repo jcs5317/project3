@@ -29,7 +29,7 @@ const Nav = props => (
       </ul>
       <ul className="nav navbar-nav navbar-right ml-auto">
 
-        {props.signedIn ? <Link to="/logout" style={{ color: "white", background: "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{ background: "green" }}>
+        {props.signedIn ? <Link to="/" style={{ color: "white", background: "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{ background: "green" }}>
           Log out
             </button>
         </Link> : <div>
