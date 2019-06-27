@@ -16,14 +16,25 @@ const tokenizer = user => {
   );
 };
 
-// ######## POST Routes ########
-// /user/signup
-// router.post("/user/signup", function(req, res){
-//   res.json({ token: tokenizer(req.user) });
-// })
+router.get(
+  "/searchpage",
+  passport.authenticate("jwt", {session: false}),
+  (req, res) => {
+    
+  }
+)
+//passportLocalStrategy,
+
+router.get("/logout", function(req, res) {
+  req.logout();
+  console.log("User is logged out");
+  
+  res.redirect("/signin");
+});
 
 router.post("/signup", function(req, res) {
   const { email, password, username: name } = req.body;
+  sessionStorage.clear();
 
   console.log(req.body)
 
@@ -55,5 +66,13 @@ router.post("/signup", function(req, res) {
 router.post("/login", passportLocalStrategy, function(req, res) {
   res.json({ token: tokenizer(req.user) });
 });
+
+// router.get("/logout",  passportLocalStrategy,  function(req, res) {
+//   req.logout();
+//   req.session.destroy();
+//   res.redirect("/");
+// });
+
+
 
 module.exports = router;

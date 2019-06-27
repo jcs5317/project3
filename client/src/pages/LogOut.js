@@ -1,0 +1,23 @@
+import React, {Component} from "react";
+ import { Col, Container, Row } from "../Components/Grid";
+import Jumbotron from "../Components/Jumbotron";
+
+class Logout extends Component{
+    componentDidMount(){
+        sessionStorage.clear(); 
+
+    }
+
+    render(){
+        return(
+            <div>
+                <Container>
+                    <Jumbotron />
+                <h1>Logged out</h1>
+                </Container>
+            </div>
+        )
+    }
+}
+
+export default Logout;

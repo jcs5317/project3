@@ -19,7 +19,7 @@ class SignIn extends Component {
         this.handleChange = this.handleChange.bind(this)
 
     }
-
+    
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -29,32 +29,31 @@ class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault()
         console.log('handleSubmit')
+        
 
         axios
             .post('/user/login', {
                 email: this.state.username,
                 password: this.state.password
             })
-            .then(response => {
+            .then(({data, status}) => {
                 console.log('login response: ')
-                console.log(response)
-                if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
+                if (status === 200) {
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    window.sessionStorage.setItem("user-token", data.token);
+                    this.props.history.push("/savedrecipes");
+                    alert("Login succesful")
                 }
             }).catch(error => {
+                alert("Please Sign Up")
                 console.log('login error: ')
                 console.log(error);
 
             })
+            event.preventDefault();
+            this.setState({email: '', password: ''})
     }
+    
 
     render() {
         if (this.state.redirectTo) {
@@ -71,8 +70,12 @@ class SignIn extends Component {
                             <form action="/login" method="post"className="form-horizontal">
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto" >
-                                        <label className="form-label" htmlFor="username">Username</label>
+                                   
+                                    <br />
+                                
+                                    <i className="fas fa-envelope-open-text fa-2x"></i>
                                     </div>
+                                         <br />
                                     <div className="col-3 col-mr-auto">
                                         <input className="form-input"
                                             type="text"
@@ -86,8 +89,10 @@ class SignIn extends Component {
                                 </div>
                                 <div className="form-group"  align="center">
                                     <div className="col-1 col-ml-auto">
-                                        <label className="form-label" htmlFor="password">Password: </label>
+                                    
+                                    <i className="fas fa-key fa-2x"></i>
                                     </div>
+                                            <br />
                                     <div className="col-3 col-mr-auto">
                                         <input className="form-input"
                                             placeholder="password"
