@@ -19,7 +19,7 @@ class SignIn extends Component {
         this.handleChange = this.handleChange.bind(this)
 
     }
-
+    
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
@@ -29,6 +29,7 @@ class SignIn extends Component {
     handleSubmit(event) {
         event.preventDefault()
         console.log('handleSubmit')
+        
 
         axios
             .post('/user/login', {
@@ -39,7 +40,7 @@ class SignIn extends Component {
                 console.log('login response: ')
                 if (status === 200) {
                     // update the state to redirect to home
-                    window.localStorage.setItem("user-token", data.token);
+                    window.sessionStorage.setItem("user-token", data.token);
                     this.props.history.push("/savedrecipes");
                     alert("Login succesful")
                 }
@@ -52,6 +53,7 @@ class SignIn extends Component {
             event.preventDefault();
             this.setState({email: '', password: ''})
     }
+    
 
     render() {
         if (this.state.redirectTo) {

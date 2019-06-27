@@ -5,7 +5,7 @@ function AuthenticatedRoute({ component: Component, ...rest }) {
     return (
         <Route {...rest}
             render={props => (
-                window.localStorage.getItem('user-token') !== null ? (
+                window.sessionStorage.getItem('user-token') !== null ? (
                     <Component {...props} />
                 ) : (
                     <Redirect to={{
