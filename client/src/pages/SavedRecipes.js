@@ -46,7 +46,7 @@ class SavedRecipes extends Component {
   render() {
     return (
       <div>
-        <Nav signedIn={false
+        <Nav signedIn={true
         } />
         <Container>
           <Jumbotron />
