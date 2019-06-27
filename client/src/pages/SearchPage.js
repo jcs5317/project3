@@ -95,7 +95,7 @@ class SearchPage extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav signedIn={true}/>
         <Container>
           <Jumbotron />
           <br />

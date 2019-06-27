@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Nav = props => (
-  
+
   <div>
     <nav className="navbar fixed-top" style={{ marginBottom: "40px", backgroundColor: "red", height: "75px" }}>
       <ul className="nav navbar-nav navbar-left">
@@ -28,23 +28,20 @@ const Nav = props => (
         </li>
       </ul>
       <ul className="nav navbar-nav navbar-right ml-auto">
-        <li>
-          <Link to="/signup" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}> <button type="button" style={{background: "green"}}>
-            Sign Up
+
+        {props.signedIn ? <Link to="/logout" style={{ color: "white", background: "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{ background: "green" }}>
+          Log out
             </button>
-          </Link>
-        </li> 
-        </ul>
-           
-          <Link to="/signin" style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{background: "green"}}>
-            Sign In
+        </Link> : <div>
+            <Link to="/signup" style={{ color: "white", background: "blue", textDecoration: "none", fontSize: "20px" }}> <button type="button" style={{ background: "green" }}>
+              Sign Up
             </button>
-          </Link>
-       
-          <Link to="/logout"  style={{ color: "white", background : "blue", textDecoration: "none", fontSize: "20px" }}><button type="button" style={{background: "green"}}>
-           Log out
-            </button>
-          </Link>
+            </Link>
+            <Link to="/signin" style={{ color: "white", background: "blue", textDecoration: "none", fontSize: "20px" }}>
+              <button type="button" style={{ background: "green" }}>Sign In</button>
+            </Link>
+          </div>}
+      </ul>
     </nav>
   </div>
 );

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
  import { Col, Container, Row } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
+import Nav from "../Components/Nav";
 
 class Logout extends Component{
     componentDidMount(){
@@ -11,6 +12,7 @@ class Logout extends Component{
     render(){
         return(
             <div>
+            <Nav signedIn={false} />
                 <Container>
                     <Jumbotron />
                 <h1>Logged out</h1>

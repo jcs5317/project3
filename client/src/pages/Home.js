@@ -3,6 +3,7 @@ import Jumbotron from "../Components/Jumbotron";
 import Footer from "../Components/Footer";
 import { Col, Container, Row } from "../Components/Grid";
 import Card from "../Components/Card";
+import Nav from "../Components/Nav";
 
 // import API from "../utils/API";
 // import axios from "axios";

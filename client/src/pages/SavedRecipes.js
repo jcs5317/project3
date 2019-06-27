@@ -5,6 +5,8 @@ import Card from "../Components/Card";
 import SavedRecipeDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 import Footer from "../Components/Footer";
+import Nav from "../Components/Nav";
+
 
 class SavedRecipes extends Component {
   state = {
@@ -44,6 +46,8 @@ class SavedRecipes extends Component {
   render() {
     return (
       <div>
+        <Nav signedIn={true
+        } />
         <Container>
           <Jumbotron />
           <Row>
