@@ -17,7 +17,7 @@ export default {
     // Need to check for user-token before calling method
     return axios.get("/api/saved/recipe", {
       headers: {
-        Authorization: window.localStorage.getItem("user-token")
+        Authorization: window.sessionStorage.getItem("user-token")
       }
     });
   },
@@ -27,7 +27,7 @@ export default {
   saveRecipe: function(recipeData) {
     return axios.post("/api/saved/recipe", recipeData,  {
       headers: {
-        Authorization: window.localStorage.getItem("user-token")
+        Authorization: window.sessionStorage.getItem("user-token")
       }
   });
 }
