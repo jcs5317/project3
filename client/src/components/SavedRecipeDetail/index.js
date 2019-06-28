@@ -1,4 +1,5 @@
 import React from "react";
+
 // import { RecipeList } from "../RecipeList";
 
 const SavedRecipeDetail = props => {
@@ -19,7 +20,7 @@ const SavedRecipeDetail = props => {
           Delete
         </button>
         
-        <button onClick={props.handleNotes} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
+        <button onClick={props.openModal} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
           Notes
         </button>
       </div>

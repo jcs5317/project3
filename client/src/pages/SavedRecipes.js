@@ -6,6 +6,8 @@ import SavedRecipeDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
+// import Modal from "../Components/Modal";
+import { Button, Modal as RModal, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
 
 
 
@@ -13,7 +15,8 @@ import Nav from "../Components/Nav";
 
 class SavedRecipes extends Component {
   state = {
-    recipes: []
+    recipes: [],
+    modal: false
   };
 
   // grab the recipes from /api/recipes
@@ -29,6 +32,19 @@ class SavedRecipes extends Component {
       )
       .catch(err => console.log(err));
   }
+
+  // openModal() {
+  //   this.setState({modal: true});
+  // }
+
+  // closeModal() {
+  //   this.setState({modal: false});
+  // }
+  toggle = () => {
+    this.setState({
+     modal: !this.state.modal
+    });
+   }
 
   // loads all recipes
   // loadRecipe = () => {
@@ -76,7 +92,9 @@ class SavedRecipes extends Component {
                       // this is an array
                       ingredients={recipe.ingredients}
                       thumbnail={recipe.imgLink}
+
                       handleDeleteRecipe={this.handleDeleteRecipe}
+                      openModal={this.toggle}
                     />
                   ))}
            
@@ -90,6 +108,19 @@ class SavedRecipes extends Component {
           </Row>
         </Container>
         <Footer />
+        <Button onClick={this.toggle}></Button>
+        <RModal isOpen={this.state.modal}>
+           <ModalHeader>
+               <h1>Test test ....</h1>
+           </ModalHeader>
+           <ModalBody>
+               <p>testing 123</p>
+           </ModalBody>
+           <ModalFooter>
+               <Button onClick={this.toggle} type="save">Save</Button>
+               <Button onClick={this.toggle} type="delete">Delete</Button>
+           </ModalFooter>
+       </RModal>
       </div>
     );
   }

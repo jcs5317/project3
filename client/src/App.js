@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import LogOut from "./pages/LogOut";
 import AuthenticatedRoute from "./Components/AuthenticatedRoute";
+import Modal from "./Components/Modal";
 
 // if (localStorage.getItem('jwtToken')) {
 //   var user = setCurrentUser(localStorage.getItem('jwtToken')).payload;
@@ -30,11 +31,16 @@ const App = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/logout" component={LogOut} />
+          <Route exact path="/test" component={Test} />
           <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
   );
 };
+
+function Test() {
+  return <Modal />
+}
 
 export default App;
