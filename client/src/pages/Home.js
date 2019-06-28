@@ -54,7 +54,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Nav signedIn={false} /> 
+        <Nav signedIn={false} />
         <Container>
           <Row>
             <Col size="md-12">
@@ -62,22 +62,27 @@ class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col size="md-12">
-              <Card className="plot" heading="Home">
+            <Card className="plot" heading="Home">
+              <div className="logo align-center">
+                <div className="image">
+                <Col size="md-12">
+                  <a id="x"><img src="https://www.xing.com/img/custom/communities/communities_files/c/b/7/64695/large/Healthy-Living-Icon-small.png?1533893961" /></a>
+                </Col>
+                </div>
+              
+                <Col size="md-12">          
                 <h4> This app is a simple and easy to use platform for users to search and find recipes of all their delicacies. Not only that, but users will also be able to find out recipes of foods that will be tailored to their personal requirements such as allergies, vegetarian/non-vegetarian needs, and lifestyle choices.</h4>
+                </Col>
+              </div>
               </Card>
-            </Col>
           </Row>
-          <Row>
-            <Col size="md-12">
-            </Col>
-          </Row>
-        </Container>
 
-        <Footer>
+        </Container >
 
-        </Footer>
-      </div>
+      <Footer>
+
+      </Footer>
+      </div >
 
     );
 
