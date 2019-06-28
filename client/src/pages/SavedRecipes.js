@@ -40,7 +40,9 @@ class SavedRecipes extends Component {
   // };
 
   // deletes a book
-  handleDeleteRecipe = id => {
+  handleDeleteRecipe = (event, id) => {
+    console.log(id)
+    console.log(event.target)
     API.deleteRecipe(id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
@@ -62,6 +64,7 @@ class SavedRecipes extends Component {
                   {this.state.recipes.map(recipe => (
                     <SavedRecipeDetail
                       key={recipe._id}
+                      id={recipe._id}
                       title={recipe.title}
                       href={recipe.link}
                       // this is an array
@@ -73,6 +76,7 @@ class SavedRecipes extends Component {
                       // this is an array
                       ingredients={recipe.ingredients}
                       thumbnail={recipe.imgLink}
+                      handleDeleteRecipe={this.handleDeleteRecipe}
                     />
                   ))}
            

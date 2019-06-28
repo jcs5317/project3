@@ -35,7 +35,7 @@ var RecipeSchema = new Schema({
     imgLink: {
         type: String,
         required: true
-    },
+    }, 
     createdAt: {
         type: Date,
         default: Date.now
