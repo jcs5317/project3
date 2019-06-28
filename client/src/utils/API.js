@@ -3,7 +3,13 @@ const edamamBaseUrl = `https://api.edamam.com/search`;
 // no need to get these values server side if they aren not being stored to a DB. just display on the front end.
 
 export default {
-
+  getSavedRecipeLabels: () =>{
+    return axios.get("/api/saved/recipe/labels", {
+      headers: {
+        Authorization: window.sessionStorage.getItem("user-token")
+      }
+    })
+  },
   getRecipes: (query, healthLabels) => {
     let url = `https://cors-anywhere.herokuapp.com/${edamamBaseUrl}?q=${query}&app_id=${
       process.env.REACT_APP_EDM_ID
@@ -37,7 +43,7 @@ export default {
   },
 
   deleteRecipe: function(id) {
-    return axios.delete("/api/saved/recipe" + id, {
+    return axios.delete("/api/saved/recipe/" + id, {
       headers: {
         Authorization: window.sessionStorage.getItem("user-token")
       }

@@ -13,7 +13,7 @@ const SavedRecipeDetail = props => {
         <p><strong>Servings:</strong> {props.servings}</p>
         <p><strong>Recipe Link:</strong> {props.href}</p>
         
-        <button onClick={props.handelDeleteRecipe} className="btn btn-warning delete-btn" style={
+        <button onClick={(event) => props.handleDeleteRecipe(event, props.id)} className="btn btn-warning delete-btn" style={
         
         { marginBottom: "30px"}}>
           Delete
