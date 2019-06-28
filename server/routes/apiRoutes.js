@@ -1,3 +1,4 @@
+
 var router = require("express").Router();
 const passport = require("passport");
 const passportJWTStrategy = passport.authenticate("jwt", { session: false });

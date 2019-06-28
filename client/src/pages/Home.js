@@ -66,7 +66,7 @@ class Home extends Component {
               <div className="logo align-center">
                 <div className="image">
                 <Col size="md-12">
-                  <a id="x"><img src="https://www.xing.com/img/custom/communities/communities_files/c/b/7/64695/large/Healthy-Living-Icon-small.png?1533893961" /></a>
+                  <div id="x"><img src="https://www.xing.com/img/custom/communities/communities_files/c/b/7/64695/large/Healthy-Living-Icon-small.png?1533893961" alt="health img"/></div>
                 </Col>
                 </div>
               

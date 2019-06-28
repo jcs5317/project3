@@ -6,7 +6,6 @@
   "dependencies": {
     "animate.css": "^3.7.2",
     "axios": "^0.18.0",
-    "bloomer": "^0.6.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^4.3.1",
