@@ -8,6 +8,9 @@ import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 
 
+
+
+
 class SavedRecipes extends Component {
   state = {
     recipes: []
@@ -50,6 +53,7 @@ class SavedRecipes extends Component {
         } />
         <Container>
           <Jumbotron />
+          
           <Row>
             <Col size="md-12">
               {console.log(this.state.recipes)}
@@ -71,10 +75,13 @@ class SavedRecipes extends Component {
                       thumbnail={recipe.imgLink}
                     />
                   ))}
+           
                 </Card>
               ) : (
                 <Card heading="Saved Recipes" />
               )}
+              
+            
             </Col>
           </Row>
         </Container>

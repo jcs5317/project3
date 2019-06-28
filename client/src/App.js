@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import LogOut from "./pages/LogOut";
 import AuthenticatedRoute from "./Components/AuthenticatedRoute";
+
 // if (localStorage.getItem('jwtToken')) {
 //   var user = setCurrentUser(localStorage.getItem('jwtToken')).payload;
 //   axios.get().then().catch();
@@ -15,6 +16,8 @@ import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 
 const App = () => {
+
+  
   return (
     <Router>
       <div>

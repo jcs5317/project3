@@ -1,5 +1,5 @@
 import React, {Component} from "react";
- import {Container} from "../Components/Grid";
+import {Container} from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Nav from "../Components/Nav";
 
