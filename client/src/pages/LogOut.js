@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Container} from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Nav from "../Components/Nav";
+import Dashboard from "../Components/Dashboard";
 
 class Logout extends Component{
     componentDidMount(){
@@ -17,6 +18,8 @@ class Logout extends Component{
                     <Jumbotron />
                 <h1>Logged out</h1>
                 </Container>
+                <Dashboard />
+             
             </div>
         )
     }

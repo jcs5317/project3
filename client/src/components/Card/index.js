@@ -1,4 +1,5 @@
-import React from "react"; import { Row } from "../Grid";
+import React from "react"; 
+import { Row } from "../Grid";
 import "./style.css";
 
 const Card = props => {
