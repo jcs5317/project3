@@ -149,7 +149,7 @@ class SearchPage extends Component {
                     </Col>
                     <Col size="" >
                       Health needs:
-                      <select value={this.state.healthLabels}   onChange={this.handleSelect}>
+                      <select value={this.state.healthLabels}  placeholder="Health Needs" onChange={this.handleSelect}>
                         <option></option>
                         <option>vegan</option>
                         <option>vegetarian</option>

@@ -60,7 +60,6 @@ class SavedRecipes extends Component {
           <Jumbotron />
           <Row>
             <Col size="md-12">
-              {console.log(this.state.recipes)}
               {this.state.recipes.length ? (
                 <Card heading="Saved Recipes">
                   {this.state.recipes.map(recipe => (
