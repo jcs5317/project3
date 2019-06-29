@@ -6,12 +6,14 @@ import SavedRecipeDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
-import DeleteBtn from "../Components/DeleteBtn";
-
+// import Modal from "../Components/Modal";
+import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import "../pages/style.css";
 
 class SavedRecipes extends Component {
   state = {
-    recipes: []
+    recipes: [],
+    modal: false
   };
 
   // grab the recipes from /api/recipes
@@ -28,24 +30,16 @@ class SavedRecipes extends Component {
       .catch(err => console.log(err));
   }
 
-  // loads all recipes
-  loadRecipe = () =>  {
-    API.getSavedRecipes()
-    .then(res =>
-      this.setState(
-        {
-          recipes: res.data
-        },
-        console.log(res.data)
-      )
-    )
-    .catch(err => console.log(err));
-}
+ 
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 
-  // deletes a recipe
-  handleDeleteRecipe =(id) => {
+  handleDeleteRecipe = (event, id) => {
     console.log(id)
-    //console.log(event.target)
+    console.log(event.target)
     API.deleteRecipe(id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
@@ -58,8 +52,10 @@ class SavedRecipes extends Component {
         } />
         <Container>
           <Jumbotron />
+
           <Row>
             <Col size="md-12">
+              {console.log(this.state.recipes)}
               {this.state.recipes.length ? (
                 <Card heading="Saved Recipes">
                   {this.state.recipes.map(recipe => (
@@ -76,19 +72,40 @@ class SavedRecipes extends Component {
                       servings={recipe.servings}
                       // this is an array
                       ingredients={recipe.ingredients}
-                      thumbnail={recipe.imgLink}>
-                      <DeleteBtn onClick={() => this.handleDeleteRecipe(recipe._id)}></DeleteBtn>
-                      </SavedRecipeDetail>
-                   
+                      thumbnail={recipe.imgLink}
+
+                      handleDeleteRecipe={this.handleDeleteRecipe}
+                      openModal={this.toggle}
+                    />
                   ))}
+
                 </Card>
               ) : (
-                <Card heading="Saved Recipes" />
-              )}
+                  <Card heading="Saved Recipes" />
+                )}
+
             </Col>
           </Row>
         </Container>
         <Footer />
+        <Button onClick={this.toggle}></Button>
+        <RModal isOpen={this.state.modal}>
+          <ModalHeader className="modalHeader">
+            <h1 className="title">Edit Recipe</h1>
+          </ModalHeader>
+          <ModalBody className="modalBody">
+            <Form>
+              <FormGroup >
+                <Label for="exampleText">Text Area</Label>
+                <Input type="Edit Recipes" name="text" id="exampleText" placeHolder="Enter Text " />
+              </FormGroup>
+            </Form>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggle} type="save">Save</Button>
+            <Button onClick={this.toggle} type="delete">Delete</Button>
+          </ModalFooter>
+        </RModal>
       </div>
     );
   }
