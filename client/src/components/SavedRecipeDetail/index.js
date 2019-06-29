@@ -1,4 +1,6 @@
 import React from "react";
+import DeleteBtn from "../DeleteBtn";
+
 // import { RecipeList } from "../RecipeList";
 
 const SavedRecipeDetail = props => {
@@ -11,20 +13,16 @@ const SavedRecipeDetail = props => {
         <p><strong>Calories:</strong> {props.calories}</p>
         <p><strong>Cautions:</strong> {props.cautions.join(", ")}</p>
         <p><strong>Servings:</strong> {props.servings}</p>
-        <p><strong>Recipe Link:</strong> {props.href}</p>
-        
-        <button onClick={(event) => props.handleDeleteRecipe(event, props.id)} className="btn btn-warning delete-btn" style={
-        
-        { marginBottom: "30px"}}>
-          Delete
-        </button>
-        
-        <button onClick={props.handleNotes} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
+        <a rel="noreferrer noopener" target="_blank" href={props.href}>Go to Recipe!</a>
+        <br></br>
+        <DeleteBtn onClick={props.handleDelete} />
+
+        <button onClick={props.handleNotes} className="btn btn-secondary note-btn" style={{ margin: "10px" }}>
           Notes
         </button>
       </div>
-      <div className="col-md-8" style={{ float: "right", marginTop: "20px" }}>
-        <p style={{ marginBottom: "30px"}}><strong>Notes:</strong> {props.description}</p>
+      <div className="col-md-8">
+        <p style={{ marginTop: "100px" }}><strong>Notes:</strong> {props.description}</p>
       </div>
       <hr style={{ clear: "both" }} />
     </span>

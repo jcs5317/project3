@@ -138,7 +138,7 @@ class SearchPage extends Component {
               <form id="recipe-form">
                 <Container>
                   <Row>
-                    <Col size="xs-9 sm-10">
+                    <Col size="xs-4 sm-6">
                       <Input
                         name="recipeSearch"
                         value={this.state.recipeSearch}
@@ -146,6 +146,18 @@ class SearchPage extends Component {
                         placeholder="Search For a Recipe"
                         required={true}
                       />
+                    </Col>
+                    <Col size="" >
+                      Health needs:
+                      <select value={this.state.healthLabels}   onChange={this.handleSelect}>
+                        <option></option>
+                        <option>vegan</option>
+                        <option>vegetarian</option>
+                        <option>sugar-conscious</option>
+                        <option>tree-nut-free</option>
+                        <option>peanut-free</option>
+                        <option>alcohol-free</option>
+                      </select>
                     </Col>
                     <Col size="xs-3 sm-2">
                       <Button
@@ -158,18 +170,7 @@ class SearchPage extends Component {
                     </Col>
                   </Row>
                   <Row>
-                    <Col size="">
-                      Health needs:
-                      <select value={this.state.healthLabels} onChange={this.handleSelect}>
-                        <option></option>
-                        <option>vegan</option>
-                        <option>vegetarian</option>
-                        <option>sugar-conscious</option>
-                        <option>tree-nut-free</option>
-                        <option>peanut-free</option>
-                        <option>alcohol-free</option>
-                      </select>
-                    </Col>
+                    
                   </Row>
                 </Container>
               </form>

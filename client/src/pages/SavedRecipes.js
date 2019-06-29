@@ -6,6 +6,7 @@ import SavedRecipeDetail from "../Components/SavedRecipeDetail";
 import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
+import DeleteBtn from "../Components/DeleteBtn";
 
 
 class SavedRecipes extends Component {
@@ -28,18 +29,23 @@ class SavedRecipes extends Component {
   }
 
   // loads all recipes
-  // loadRecipe = () => {
-  //   API.getRecipes()
-  //     .then(res =>
-  //       this.setState({ recipes: res.data })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  loadRecipe = () =>  {
+    API.getSavedRecipes()
+    .then(res =>
+      this.setState(
+        {
+          recipes: res.data
+        },
+        console.log(res.data)
+      )
+    )
+    .catch(err => console.log(err));
+}
 
-  // deletes a book
-  handleDeleteRecipe = (event, id) => {
+  // deletes a recipe
+  handleDeleteRecipe =(id) => {
     console.log(id)
-    console.log(event.target)
+    //console.log(event.target)
     API.deleteRecipe(id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
@@ -71,9 +77,10 @@ class SavedRecipes extends Component {
                       servings={recipe.servings}
                       // this is an array
                       ingredients={recipe.ingredients}
-                      thumbnail={recipe.imgLink}
-                      handleDeleteRecipe={this.handleDeleteRecipe}
-                    />
+                      thumbnail={recipe.imgLink}>
+                      <DeleteBtn onClick={() => this.handleDeleteRecipe(recipe._id)}></DeleteBtn>
+                      </SavedRecipeDetail>
+                   
                   ))}
                 </Card>
               ) : (
