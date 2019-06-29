@@ -1,6 +1,5 @@
 import React from "react";
-
-// import { RecipeList } from "../RecipeList";
+import DeleteBtn from "../DeleteBtn";
 
 const SavedRecipeDetail = props => {
   return (
@@ -13,13 +12,9 @@ const SavedRecipeDetail = props => {
         <p><strong>Cautions:</strong> {props.cautions.join(", ")}</p>
         <p><strong>Servings:</strong> {props.servings}</p>
         <p><strong>Recipe Link:</strong> {props.href}</p>
-        
-        <button onClick={(event) => props.handleDeleteRecipe(event, props.id)} className="btn btn-warning delete-btn" style={
-        
-        { marginBottom: "30px"}}>
-          Delete
-        </button>
-        
+        <a rel="noreferrer noopener" target="_blank" href={props.href}>Go to Recipe!</a>
+        <br></br>
+        <DeleteBtn onClick={props.handleDelete} />
         <button onClick={props.openModal} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
           Notes
         </button>

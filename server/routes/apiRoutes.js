@@ -72,10 +72,14 @@ router.get("/saved/recipe/:id", function(req, res) {
 
 router.delete("/saved/recipe/:id", passportJWTStrategy,  function(req, res) {
   // delete save recipe
-  var id = req.params.id
-  var user = req.user.id
+ 
 
+  console.log(req.params)
   // delete recipe where user === user && id === id
+  db.Recipe.deleteOne({_id: req.params.id })
+    .then(recipedb => res.json(true))
+   // .then(recipedb => res.json(recipedb))
+    .catch(err => res.status(422).json(err));
 
 });
 

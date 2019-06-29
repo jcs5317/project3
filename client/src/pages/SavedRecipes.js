@@ -7,11 +7,8 @@ import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 // import Modal from "../Components/Modal";
-import { Button, Modal as RModal, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
-
-
-
-
+import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import "../pages/style.css";
 
 class SavedRecipes extends Component {
   state = {
@@ -33,29 +30,13 @@ class SavedRecipes extends Component {
       .catch(err => console.log(err));
   }
 
-  // openModal() {
-  //   this.setState({modal: true});
-  // }
-
-  // closeModal() {
-  //   this.setState({modal: false});
-  // }
+ 
   toggle = () => {
     this.setState({
-     modal: !this.state.modal
+      modal: !this.state.modal
     });
-   }
+  }
 
-  // loads all recipes
-  // loadRecipe = () => {
-  //   API.getRecipes()
-  //     .then(res =>
-  //       this.setState({ recipes: res.data })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // deletes a book
   handleDeleteRecipe = (event, id) => {
     console.log(id)
     console.log(event.target)
@@ -71,7 +52,7 @@ class SavedRecipes extends Component {
         } />
         <Container>
           <Jumbotron />
-          
+
           <Row>
             <Col size="md-12">
               {console.log(this.state.recipes)}
@@ -97,30 +78,34 @@ class SavedRecipes extends Component {
                       openModal={this.toggle}
                     />
                   ))}
-           
+
                 </Card>
               ) : (
-                <Card heading="Saved Recipes" />
-              )}
-              
-            
+                  <Card heading="Saved Recipes" />
+                )}
+
             </Col>
           </Row>
         </Container>
         <Footer />
         <Button onClick={this.toggle}></Button>
         <RModal isOpen={this.state.modal}>
-           <ModalHeader>
-               <h1>Test test ....</h1>
-           </ModalHeader>
-           <ModalBody>
-               <p>testing 123</p>
-           </ModalBody>
-           <ModalFooter>
-               <Button onClick={this.toggle} type="save">Save</Button>
-               <Button onClick={this.toggle} type="delete">Delete</Button>
-           </ModalFooter>
-       </RModal>
+          <ModalHeader className="modalHeader">
+            <h1 className="title">Edit Recipe</h1>
+          </ModalHeader>
+          <ModalBody className="modalBody">
+            <Form>
+              <FormGroup >
+                <Label for="exampleText">Text Area</Label>
+                <Input type="Edit Recipes" name="text" id="exampleText" placeHolder="Enter Text " />
+              </FormGroup>
+            </Form>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={this.toggle} type="save">Save</Button>
+            <Button onClick={this.toggle} type="delete">Delete</Button>
+          </ModalFooter>
+        </RModal>
       </div>
     );
   }
