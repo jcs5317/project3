@@ -1,0 +1,23 @@
+.title {
+    text-align: center;
+}
+
+h5 {
+    color: white;
+    text-align: center;
+    
+}
+
+.modalHeader {
+    background-color: #FF0000;
+    text-align: center;
+}
+
+.modalBody{
+    background-color: #FAFAD2;
+}
+
+.textarea { 
+    
+    max-width: auto;
+   }

@@ -48,5 +48,31 @@ export default {
         Authorization: window.sessionStorage.getItem("user-token")
       }
     });
-  }
+  },
+
+  getNotes: () =>{
+    return axios.get("/api/Notes", {
+      headers: {
+        Authorization: window.sessionStorage.getItem("user-token")
+      }
+    })
+  },
+
+   saveNotes: function (noteData) {
+    return axios.post("/api/notes", noteData, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("user-token")
+      }
+    });
+  },
+
+  deleteNotes: function(id) {
+    return axios.delete("/api/notes/" + id, {
+      headers: {
+        Authorization: window.sessionStorage.getItem("user-token")
+      }
+    });
+  },
+ 
+
 }

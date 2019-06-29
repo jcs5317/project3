@@ -42,7 +42,7 @@ var RecipeSchema = new Schema({
     },
     notes: [{
         type: Schema.Types.ObjectId,
-        ref: "Note"
+        ref: "Notes"
     }],
     user: {
         type: Schema.Types.ObjectId,

@@ -80,7 +80,6 @@ class Home extends Component {
         </Container >
 
       <Footer>
-
       </Footer>
       </div >
 
