@@ -16,7 +16,7 @@ const SavedRecipeDetail = props => {
         <p><strong>Recipe Link:</strong> {props.href}</p>
         <a rel="noreferrer noopener" target="_blank" href={props.href}>Go to Recipe!</a>
         <br></br>
-        <DeleteBtn onClick={props.handleDelete} className="btn btn-warning delete-btn" style={
+        <DeleteBtn onClick={props.handleDeleteRecipe} className="btn btn-warning delete-btn" style={
       { marginBottom: "30px"}}></DeleteBtn>
         <button onClick={props.openModal} className="btn note-btn" style={{ marginBottom: "30px"}}>
           Notes

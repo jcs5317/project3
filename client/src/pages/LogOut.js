@@ -6,7 +6,6 @@ import Nav from "../Components/Nav";
 class Logout extends Component {
     componentDidMount() {
         sessionStorage.clear();
-
     }
 
     render() {

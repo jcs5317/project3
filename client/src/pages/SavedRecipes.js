@@ -43,10 +43,10 @@ class SavedRecipes extends Component {
     });
   }
 
-  handleDelete = (event, id) => {
-    console.log(id)
+  handleDeleteRecipe = (event, _id) => {
+    console.log(_id)
     console.log(event.target)
-    API.deleteRecipe(id)
+    API.deleteRecipe(_id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
   };
@@ -143,6 +143,9 @@ class SavedRecipes extends Component {
       imgLink: this.state.recipes[i].image,
       ingredients: this.state.recipes[i].ingredientLines
     }
+
+
+
     
   }
   render() {
@@ -173,7 +176,7 @@ class SavedRecipes extends Component {
                       // this is an array
                       ingredients={recipe.ingredients}
                       thumbnail={recipe.imgLink}
-                      handleDeleteRecipe={this.handleDelete}
+                      handleDeleteRecipe={this.handleDeleteRecipe}
                       openModal={this.toggle}
                     />
                   ))}
