@@ -50,29 +50,21 @@ export default {
     });
   },
 
-  getNotes: () =>{
-    return axios.get("/api/Notes", {
-      headers: {
-        Authorization: window.sessionStorage.getItem("user-token")
-      }
-    })
+  getNotes: function() {
+    return axios.get("/api/notes");
   },
-
-   saveNotes: function (noteData) {
-    return axios.post("/api/notes", noteData, {
-      headers: {
-        Authorization: window.sessionStorage.getItem("user-token")
-      }
-    });
+  // Gets the note with the given id
+  getNote: function(id) {
+    return axios.get("/api/notes/" + id);
   },
-
-  deleteNotes: function(id) {
-    return axios.delete("/api/notes/" + id, {
-      headers: {
-        Authorization: window.sessionStorage.getItem("user-token")
-      }
-    });
+  // Deletes the note with the given id
+  deleteNote: function(id) {
+    return axios.delete("/api/notes/" + id);
   },
+  // Saves a note to the database
+  saveNotes: function(noteData) {
+    return axios.post("/api/notes", noteData);
+  }
  
 
 }

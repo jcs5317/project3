@@ -85,7 +85,7 @@ router.get("/getsinglenote/:id", function(req,res) {
     });
 });
 
-router.delete("/deletenote/:id", function(req,res) {
+router.delete("/notes/:id", function(req,res) {
     db.Notes.remove(
         {_id: req.params.id}
     )
