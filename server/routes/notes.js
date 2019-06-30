@@ -29,15 +29,15 @@ router.post("/notes", passportJWTStrategy, function(req, res) {
 
 router.get("getnotes/:id", function(req,res) {
     // Find the note by req.params.id,
-    db.Notes.findOne(
+    db.Recipe.findOne(
         {_id: req.params.id}
     )
     // run the populate method with note,
     .populate("notes")
     // respond with the article with the note included.
-    .then(function(dbNotes) {
+    .then(function(dbRecipe) {
         // If all Articles are successfully found, send them back to the client.
-        res.json(dbNotes);
+        res.json(dbRecipe);
     })
     .catch(function(error) {
         // If an error occurs, send the error to the client.
