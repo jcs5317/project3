@@ -13,6 +13,7 @@ import SaveBtn from "../Components/SaveBtn";
 import DeleteBtn from "../Components/DeleteBtn";
 import Actions from "../utils/API";
 
+
 class SavedRecipes extends Component {
   state = {
     recipes: [],
@@ -35,7 +36,6 @@ class SavedRecipes extends Component {
       )
       .catch(err => console.log(err));
   }
-
 
   toggle = () => {
     this.setState({
@@ -125,12 +125,14 @@ class SavedRecipes extends Component {
         <Button onClick={this.toggle}></Button>
         <RModal isOpen={this.state.modal}>
           <ModalHeader className="modalHeader">
-            <h5 >Edit Recipe</h5>
+
+            <h5 >Recipe</h5>
+
           </ModalHeader>
           <ModalBody className="modalBody">
             <Form>
               <FormGroup >
-                <Label for="exampleText">Text Area</Label>
+                <Label for="exampleText">Edit Recipe</Label>
                 <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
               </FormGroup>
             </Form>
@@ -138,6 +140,7 @@ class SavedRecipes extends Component {
           <ModalFooter className="modalFooter">
             <SaveBtn className="btn btn-secondary" id="note-btn" onClick={this.toggle} style={{ background: "white" }} type="save">Save</SaveBtn>
             <DeleteBtn className="btn" onClick={this.toggle} type="delete">Delete</DeleteBtn>
+
           </ModalFooter>
         </RModal>
       </div>
