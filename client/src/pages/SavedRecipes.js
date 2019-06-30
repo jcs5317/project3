@@ -43,10 +43,10 @@ class SavedRecipes extends Component {
 }
 
   // deletes a recipe
-  handleDeleteRecipe =(id) => {
-    console.log(id)
-    //console.log(event.target)
-    API.deleteRecipe(id)
+  handleDeleteRecipe = (event, _id) => {
+    console.log(_id)
+    console.log(event.target)
+    API.deleteRecipe(_id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
   };
