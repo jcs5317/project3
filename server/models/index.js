@@ -2,5 +2,5 @@
 module.exports = {
     User: require("./User"),
     Recipe: require("./Recipe"),
-    Note: require("./Notes")
+    Notes: require("./Notes")
 }
