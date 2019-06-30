@@ -1,21 +1,20 @@
-import React, {Component} from "react";
- import {Container} from "../Components/Grid";
+import React, { Component } from "react";
+import { Container } from "../Components/Grid";
 import Jumbotron from "../Components/Jumbotron";
 import Nav from "../Components/Nav";
 
-class Logout extends Component{
-    componentDidMount(){
-        sessionStorage.clear(); 
-
+class Logout extends Component {
+    componentDidMount() {
+        sessionStorage.clear();
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-            <Nav signedIn={false} />
+                <Nav signedIn={false} />
                 <Container>
                     <Jumbotron />
-                <h1>Logged out</h1>
+                    <h1>Logged out</h1>
                 </Container>
             </div>
         )

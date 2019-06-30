@@ -15,6 +15,22 @@
     transition: box-shadow 1s, transform 2s;
 }
 
+h4 { 
+  font-size: 1.4em;
+  margin-left: 25px;
+}
+
+.image {
+  margin-right: 20%; 
+  margin-left: auto; 
+  height: 35%;
+  width: 50%;
+}
+
+.jumbotron {
+  background-color: green;
+}
+
 body
 {
   background-color: lightgoldenrodyellow; 

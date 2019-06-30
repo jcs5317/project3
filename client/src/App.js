@@ -8,6 +8,8 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import LogOut from "./pages/LogOut";
 import AuthenticatedRoute from "./Components/AuthenticatedRoute";
+import Modal from "./Components/Modal";
+
 // if (localStorage.getItem('jwtToken')) {
 //   var user = setCurrentUser(localStorage.getItem('jwtToken')).payload;
 //   axios.get().then().catch();
@@ -15,6 +17,8 @@ import AuthenticatedRoute from "./Components/AuthenticatedRoute";
 
 
 const App = () => {
+
+  
   return (
     <Router>
       <div>
@@ -26,12 +30,15 @@ const App = () => {
           <AuthenticatedRoute exact path="/savedrecipes" component={SavedRecipes}/>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/" component={LogOut} />
+          <Route exact path="/logout" component={LogOut} />
+         
           <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
   );
 };
+
+
 
 export default App;
