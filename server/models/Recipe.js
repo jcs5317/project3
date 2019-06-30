@@ -40,14 +40,16 @@ var RecipeSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    notes: [{
-        type: Schema.Types.ObjectId,
-        ref: "Note"
-    }],
+   
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+
+    notes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Notes"
+    }]
 })
 
 

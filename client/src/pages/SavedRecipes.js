@@ -9,12 +9,19 @@ import Nav from "../Components/Nav";
 // import Modal from "../Components/Modal";
 import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 import "../pages/style.css";
+import SaveBtn from "../Components/SaveBtn";
+import DeleteBtn from "../Components/DeleteBtn";
+import Actions from "../utils/API";
+
 
 class SavedRecipes extends Component {
   state = {
     recipes: [],
-    modal: false
+    modal: false,
+    notes: []
   };
+  
+  
 
   // grab the recipes from /api/recipes
   componentDidMount() {
@@ -30,21 +37,49 @@ class SavedRecipes extends Component {
       .catch(err => console.log(err));
   }
 
- 
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   }
 
-  handleDeleteRecipe = (event, id) => {
-    console.log(id)
+  handleDeleteRecipe = (event, _id) => {
+    console.log(_id)
     console.log(event.target)
-    API.deleteRecipe(id)
+    API.deleteRecipe(_id)
       .then(res => this.loadRecipes())
       .catch(err => console.log(err));
   };
 
+
+  //save recipe to db
+  handleSaveNotes = (e, i) => {
+    var btn = e.target
+    btn.textContent = "SAVED!"
+    var save = {
+      body: this.state.body
+    }
+
+    Actions.saveNotes(save)
+      .then((response) => {
+        if (response) {
+          alert("Note Saved!")
+          // remove the save button from 
+          // this.props.history.push("/savedrecipes");
+        } else {
+          alert("Something went wrong!")
+        }
+      })
+      .catch(err => alert("Recipe already saved!"));
+  };
+
+  deleteNote = id => {
+    Actions.deleteNote  (id)
+      .then(res => console.log(res.status))
+      .catch(err => console.log(err));
+  };
+
+  
   render() {
     return (
       <div>
@@ -73,7 +108,6 @@ class SavedRecipes extends Component {
                       // this is an array
                       ingredients={recipe.ingredients}
                       thumbnail={recipe.imgLink}
-
                       handleDeleteRecipe={this.handleDeleteRecipe}
                       openModal={this.toggle}
                     />
@@ -91,19 +125,22 @@ class SavedRecipes extends Component {
         <Button onClick={this.toggle}></Button>
         <RModal isOpen={this.state.modal}>
           <ModalHeader className="modalHeader">
-            <h1 className="title">Edit Recipe</h1>
+
+            <h5 >Recipe</h5>
+
           </ModalHeader>
           <ModalBody className="modalBody">
             <Form>
               <FormGroup >
-                <Label for="exampleText">Text Area</Label>
-                <Input type="Edit Recipes" name="text" id="exampleText" placeHolder="Enter Text " />
+                <Label for="exampleText">Edit Recipe</Label>
+                <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
               </FormGroup>
             </Form>
           </ModalBody>
-          <ModalFooter>
-            <Button onClick={this.toggle} type="save">Save</Button>
-            <Button onClick={this.toggle} type="delete">Delete</Button>
+          <ModalFooter className="modalFooter">
+            <SaveBtn className="btn btn-secondary" id="note-btn" onClick={this.toggle} style={{ background: "white" }} type="save">Save</SaveBtn>
+            <DeleteBtn className="btn" onClick={this.toggle} type="delete">Delete</DeleteBtn>
+
           </ModalFooter>
         </RModal>
       </div>

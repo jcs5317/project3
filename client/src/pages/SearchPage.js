@@ -119,8 +119,8 @@ class SearchPage extends Component {
       .catch(err => alert("Recipe already saved!"));
   };
 
-  removeRecipe = id => {
-    Actions.removeRecipe(id)
+  deleteRecipe = id => {
+    Actions.deleteRecipe(id)
       .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };

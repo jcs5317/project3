@@ -27,6 +27,10 @@ var UserSchema = new Schema({
     savedRecipe: [{
         type: Schema.Types.ObjectId,
         ref: "Recipe"
+    }], 
+    savedNotes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Notes"
     }]
    
 })

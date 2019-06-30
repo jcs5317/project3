@@ -31,7 +31,7 @@ const App = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/logout" component={LogOut} />
-          <Route exact path="/test" component={Test} />
+         
           <Route component={NoMatch} />
         </Switch>
       </div>
@@ -39,8 +39,6 @@ const App = () => {
   );
 };
 
-function Test() {
-  return <Modal />
-}
+
 
 export default App;
