@@ -3,7 +3,7 @@ import DeleteBtn from "../DeleteBtn";
 
 const SavedRecipeDetail = props => {
 
-  
+
   return (
     <span>
       <div className="col-md-4" style={{ float: "left", marginTop: "20px" }}>
@@ -16,14 +16,13 @@ const SavedRecipeDetail = props => {
         <p><strong>Recipe Link:</strong> {props.href}</p>
         <a rel="noreferrer noopener" target="_blank" href={props.href}>Go to Recipe!</a>
         <br></br>
-        <DeleteBtn onClick={props.handleDeleteRecipe} />
-        <button onClick={props.openModal} className="btn btn-secondary note-btn" style={{ marginBottom: "30px"}}>
+        <DeleteBtn onClick={props.handleDelete} className="btn btn-warning delete-btn" style={
+      { marginBottom: "30px"}}></DeleteBtn>
+        <button onClick={props.openModal} className="btn note-btn" style={{ marginBottom: "30px"}}>
           Notes
         </button>
       </div>
-      <div className="col-md-8" style={{ float: "right", marginTop: "20px" }}>
-        <p style={{ marginBottom: "30px"}}><strong>Notes:</strong> {props.description}</p>
-      </div>
+
       <hr style={{ clear: "both" }} />
     </span>
   );

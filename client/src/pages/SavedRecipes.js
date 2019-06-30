@@ -13,6 +13,7 @@ import SaveBtn from "../Components/SaveBtn";
 import DeleteBtn from "../Components/DeleteBtn";
 import Actions from "../utils/API";
 
+
 class SavedRecipes extends Component {
   state = {
     recipes: [],
@@ -36,14 +37,13 @@ class SavedRecipes extends Component {
       .catch(err => console.log(err));
   }
 
-
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   }
 
-  handleDeleteRecipe = (event, id) => {
+  handleDelete = (event, id) => {
     console.log(id)
     console.log(event.target)
     API.deleteRecipe(id)
@@ -74,8 +74,8 @@ class SavedRecipes extends Component {
       .catch(err => alert("Note already saved!"));
   };
 
-  deleteNotes = id => {
-    Actions.deleteNotes(id)
+  removeNotes = id => {
+    Actions.removeNotes(id)
       .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };
@@ -108,7 +108,7 @@ class SavedRecipes extends Component {
                       // this is an array
                       ingredients={recipe.ingredients}
                       thumbnail={recipe.imgLink}
-                      handleDeleteRecipe={this.handleDeleteRecipe}
+                      handleDeleteRecipe={this.handleDelete}
                       openModal={this.toggle}
                     />
                   ))}
@@ -125,12 +125,14 @@ class SavedRecipes extends Component {
         <Button onClick={this.toggle}></Button>
         <RModal isOpen={this.state.modal}>
           <ModalHeader className="modalHeader">
-            <h5 >Edit Recipe</h5>
+
+            <h5 >Recipe</h5>
+
           </ModalHeader>
           <ModalBody className="modalBody">
             <Form>
               <FormGroup >
-                <Label for="exampleText">Text Area</Label>
+                <Label for="exampleText">Edit Recipe</Label>
                 <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
               </FormGroup>
             </Form>
@@ -138,6 +140,7 @@ class SavedRecipes extends Component {
           <ModalFooter className="modalFooter">
             <SaveBtn className="btn btn-secondary" id="note-btn" onClick={this.toggle} style={{ background: "white" }} type="save">Save</SaveBtn>
             <DeleteBtn className="btn" onClick={this.toggle} type="delete">Delete</DeleteBtn>
+
           </ModalFooter>
         </RModal>
       </div>
