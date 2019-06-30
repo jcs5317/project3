@@ -124,27 +124,6 @@ class SavedRecipes extends Component {
       .catch(err => alert("Recipe already saved!"));
   };
 
-  //save recipe to db
-  handleSaveNotes = (e, i) => {
-    var btn = e.target
-    btn.textContent = "SAVED!"
-    var save = {
-      body: this.state.body
-    }
-
-    Actions.saveNotes(save)
-      .then((response) => {
-        if (response) {
-          alert("Note Saved!")
-          // remove the save button from 
-          // this.props.history.push("/savedrecipes");
-        } else {
-          alert("Something went wrong!")
-        }
-      })
-      .catch(err => alert("Note already saved!"));
-  };
-
   deleteNotes = id => {
     Actions.deleteNotes(id)
       .then(res => console.log(res.status))
