@@ -13,7 +13,7 @@ const SavedRecipeDetail = props => {
         <p><strong>Calories:</strong> {props.calories}</p>
         <p><strong>Cautions:</strong> {props.cautions.join(", ")}</p>
         <p><strong>Servings:</strong> {props.servings}</p>
-        <p><strong>Recipe Link:</strong> {props.href}</p>
+        <p><strong>Recipe Link:</strong></p>
         <a rel="noreferrer noopener" target="_blank" href={props.href}>Go to Recipe!</a>
         <br></br>
         <DeleteBtn onClick={props.handleDeleteRecipe} className="btn btn-warning delete-btn" style={
@@ -29,4 +29,3 @@ const SavedRecipeDetail = props => {
 }
 
 export default SavedRecipeDetail;
-
