@@ -73,8 +73,8 @@ class SavedRecipes extends Component {
       .catch(err => alert("Recipe already saved!"));
   };
 
-  deleteNotes = id => {
-    Actions.deleteNotes(id)
+  deleteNote = id => {
+    Actions.deleteNote  (id)
       .then(res => console.log(res.status))
       .catch(err => console.log(err));
   };

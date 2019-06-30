@@ -4,7 +4,6 @@ var Schema = mongoose.Schema
 
 var NotesSchema = new Schema({
 
-
     body: [{
         type: String,
         ref: "Notes"

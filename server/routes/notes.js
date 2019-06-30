@@ -27,7 +27,7 @@ router.post("/notes", passportJWTStrategy, function(req, res) {
   // if error or something happens item not created send res.json(false)
 });
 
-router.get("notes/:id", function(req,res) {
+router.get("getnotes/:id", function(req,res) {
     // Find the note by req.params.id,
     db.Notes.findOne(
         {_id: req.params.id}
@@ -53,7 +53,7 @@ router.post("/postnotes/:id", function(req, res) {
     console.log("xxxxxxx");
     db.Notes.create(req.body)
     .then(function(dbNotes) {
-        return db.Notes.findOneAndUpdate(
+        return db.Recipe.findOneAndUpdate(
             {_id: req.params.id},
             {$push:
                 {notes: dbNotes._id}
@@ -63,9 +63,9 @@ router.post("/postnotes/:id", function(req, res) {
         );
     })
     // respond with the article with the note included.
-    .then(function(dbNotes) {
+    .then(function(dbRecipe) {
         // If all Notes are successfully found, send them back to the client.
-        res.json(dbNotes);
+        res.json(dbRecipe);
     })
     .catch(function(error) {
         // If an error occurs, send the error to the client.
@@ -85,7 +85,7 @@ router.get("/getsinglenote/:id", function(req,res) {
     });
 });
 
-router.delete("/notes/:id", function(req,res) {
+router.delete("/deletenote/:id", function(req,res) {
     db.Notes.remove(
         {_id: req.params.id}
     )
@@ -94,6 +94,22 @@ router.delete("/notes/:id", function(req,res) {
         res.json(dbNotes);
     })
     .catch(function(error) {
+        res.json(error);
+    });
+});
+
+
+router.put("/returned/:id", function(req, res) {
+    // Update the article's boolean "saved" status to 'false.'
+    db.Recipe.update(
+        {_id: req.params.id},
+        {saved: false}
+    )
+    .then(function(result) {
+        res.json(result);
+    })
+    .catch(function(error) {
+        // If an error occurs, send the error to the client.
         res.json(error);
     });
 });
