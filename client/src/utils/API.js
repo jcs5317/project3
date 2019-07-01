@@ -75,7 +75,7 @@ export default {
   },
   // Saves a note to the database
   saveNotes: function(noteData) {
-    return axios.post("/api/notes", noteData, {
+    return axios.post("/notes/notes", noteData, {
       headers: {
         Authorization: window.sessionStorage.getItem("user-token")
       }

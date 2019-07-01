@@ -3,15 +3,11 @@ var Schema = mongoose.Schema
 
 
 var NotesSchema = new Schema({
-    title: [{
-        type: String,
-        required: true,
-        unique: {index:{unique: true}}
-    }],
-    body: [{
+
+    body: {
         type: String,
         ref: "Notes"
-    }],
+    },
 
     createdAt: {
         type: Date,
