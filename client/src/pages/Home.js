@@ -29,19 +29,16 @@ class Home extends Component {
                 </div>
 
                 <Col size="md-12">
-                  <ul style={{fontSize: "20px", listStyle: "none"}}>
-                    <li >The application is a recipe finder that helps people find and save their favorite recipes, what ingredients to use, and how to create the delicacies.
+                  <ul style={{ fontSize: "25px", listStyle: "none" }}>
+                    <li >Welcome to a recipe finder that helps you find and save your favorite recipes. 
                   </li>
-                  <br />
-                    <li>This app also allows users to search specific recipes based on a search criteria involving the users that may have certain needs.
-                  </li>
-                  <br />
-                    <li>The application’s simple format and user friendly interface will allow these users to look up all the relevant recipes such as peanut-free recipes for those with peanut allergies, or vegetarian recipes for those that are vegan.
-                  </li>
-                  <br />
-                    <li>The users will also be able to save recipes that they find are particularly useful to them as part of their own personal account on the website, as well as add any useful notes to the saved recipes that they might want to remember at a future date that will allow the user to make an informed decision about the recipe and whether it is the right one for them.
+                    <br />
+                    <li>You can search for recipes based on specific search criteria. For example you can seach for a specific ingredient (tomato or chicken, etc.), a category (lunch or casserole, etc.) or even a dietary need (vegetarian or vegan, etc.).
+                      </li>
+                    <br />
+                    <li>You will also be able to create your own personal account to save your favorite recipes and you can even add a special note to each recipe to give it your own special twist!
                     </li>
-                   
+
                   </ul>
                 </Col>
               </div>
