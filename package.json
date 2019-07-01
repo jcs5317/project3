@@ -1,0 +1,20 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "Fullstack application where you can not only search for a variety of recipes but also save their favorites and store to database.\r A user may signup and with their own profile and make custom notes for their saved recipes.\r Also search for recipes with your necessary health/ dietary needs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcs5317/project3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcs5317/project3/issues"
+  },
+  "homepage": "https://github.com/jcs5317/project3#readme"
+}
