@@ -66,7 +66,8 @@ handleDeleteRecipe =(id) => {
   }
 
   //save recipe to db
-  handleSaveNotes = (e, i) => {
+  handleSaveNotes = (e) => {
+    this.toggle();
     var btn = e.target
     btn.textContent = "SAVED!"
     var save = {
@@ -151,7 +152,7 @@ handleDeleteRecipe =(id) => {
             </Form>
           </ModalBody>
           <ModalFooter className="modalFooter">
-            <SaveBtn className="btn btn-secondary" id="note-btn" onClick={this.toggle} style={{ background: "white" }} type="save">Save</SaveBtn>
+            <SaveBtn className="btn btn-secondary" id="note-btn" onClick={this.handleSaveNotes} style={{ background: "white" }} type="save">Save</SaveBtn>
             <DeleteBtn className="btn" onClick={this.toggle} type="delete">Delete</DeleteBtn>
 
           </ModalFooter>
