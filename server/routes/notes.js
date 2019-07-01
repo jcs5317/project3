@@ -27,6 +27,17 @@ router.post("/notes", passportJWTStrategy, function(req, res) {
   // if error or something happens item not created send res.json(false)
 });
 
+router.get("/getnotes", passportJWTStrategy, function(req, res) {
+    // get all saved recipes
+    db.Notes.find({ user: req.user.id })
+      .then(recipedb => {
+        res.json(recipedb);
+      })
+      .catch(err => {
+        res.status(400).json({ error: err });
+      });
+  });
+
 router.get("getnotes/:id", function(req,res) {
     // Find the note by req.params.id,
     db.Recipe.findOne(
@@ -36,7 +47,7 @@ router.get("getnotes/:id", function(req,res) {
     .populate("notes")
     // respond with the article with the note included.
     .then(function(dbRecipe) {
-        // If all Articles are successfully found, send them back to the client.
+        // If all Recipes are successfully found, send them back to the client.
         res.json(dbRecipe);
     })
     .catch(function(error) {
