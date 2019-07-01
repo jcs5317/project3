@@ -7,7 +7,7 @@ import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 // import Modal from "../Components/Modal";
-import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import "../pages/style.css";
 import SaveBtn from "../Components/SaveBtn";
 import DeleteBtn from "../Components/DeleteBtn";
