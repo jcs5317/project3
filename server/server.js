@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/recipedb", 
+  process.env.MONGODB_URI || "mongodb://foodetary:foodetary1@ds345587.mlab.com:45587/heroku_vqch48z8", 
   // in solution examples
   {useCreateIndex: true, useNewUrlParser: true}
 )

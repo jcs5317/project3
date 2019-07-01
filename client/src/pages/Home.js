@@ -20,7 +20,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Card className="plot" heading="Home">
+            <Card className="plot">
               <div className="logo align-center">
                 <div className="image">
                   <Col size="md-12">

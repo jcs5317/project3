@@ -21,36 +21,49 @@ class SavedRecipes extends Component {
     notes: []
   };
   
-  
-
-  // grab the recipes from /api/recipes
-  componentDidMount() {
-    API.getSavedRecipes()
-      .then(res =>
-        this.setState(
-          {
-            recipes: res.data
-          },
-          console.log(res.data)
-        )
+ // grab the recipes from /api/recipes
+componentDidMount() {
+  API.getSavedRecipes()
+    .then(res =>
+      this.setState(
+        {
+          recipes: res.data
+        },
+        console.log(res.data)
       )
-      .catch(err => console.log(err));
-  }
+    )
+    .catch(err => console.log(err));
+}
+
+// loads all recipes
+loadRecipe = () =>  {
+  API.getSavedRecipes()
+  .then(res =>
+    this.setState(
+      {
+        recipes: res.data
+      },
+      console.log(res.data)
+    )
+  )
+  .catch(err => console.log(err));
+}
+
+// deletes a recipe
+handleDeleteRecipe =(id) => {
+  console.log(id)
+  //console.log(event.target)
+  API.deleteRecipe(id)
+    .then(res => this.loadRecipes())
+    .catch(err => console.log(err));
+};
+
 
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   }
-
-  handleDeleteRecipe = (event, _id) => {
-    console.log(_id)
-    console.log(event.target)
-    API.deleteRecipe(_id)
-      .then(res => this.loadRecipes())
-      .catch(err => console.log(err));
-  };
-
 
   //save recipe to db
   handleSaveNotes = (e, i) => {
@@ -149,3 +162,4 @@ class SavedRecipes extends Component {
 }
 
 export default SavedRecipes;
+
