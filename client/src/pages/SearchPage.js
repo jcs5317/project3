@@ -10,6 +10,7 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
+import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 
 class SearchPage extends Component {
   state = {
@@ -148,16 +149,18 @@ class SearchPage extends Component {
                       />
                     </Col>
                     <Col size="" >
-                      Health needs:
-                      <select value={this.state.healthLabels}  placeholder="Health Needs" onChange={this.handleSelect}>
-                        <option></option>
-                        <option>vegan</option>
-                        <option>vegetarian</option>
-                        <option>sugar-conscious</option>
-                        <option>tree-nut-free</option>
-                        <option>peanut-free</option>
-                        <option>alcohol-free</option>
-                      </select>
+                    <FormGroup>
+          <CustomInput type="select" id="exampleCustomSelect" name="customSelect" select value={this.state.healthLabels} onChange={this.handleSelect}>
+            <option select value="">Health Selections</option>
+            <option>vegan</option>
+            <option>vegetarian</option>
+            <option>sugar-conscious</option>
+            <option>tree-nut-free</option>
+            <option>peanut-free</option>
+            <option>alcohol-free</option>
+          </CustomInput>
+        </FormGroup>
+                    
                     </Col>
                     <Col size="xs-3 sm-2">
                       <Button
