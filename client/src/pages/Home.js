@@ -8,7 +8,7 @@ import Nav from "../Components/Nav";
 
 class Home extends Component {
 
- 
+
   render() {
     return (
       <div>
@@ -23,22 +23,32 @@ class Home extends Component {
             <Card className="plot" heading="Home">
               <div className="logo align-center">
                 <div className="image">
-                <Col size="md-12">
-                  <div id="x"><img src="https://www.xing.com/img/custom/communities/communities_files/c/b/7/64695/large/Healthy-Living-Icon-small.png?1533893961" alt="health img"/></div>
-                </Col>
+                  <Col size="md-12">
+                    <div id="x"><img src="https://www.xing.com/img/custom/communities/communities_files/c/b/7/64695/large/Healthy-Living-Icon-small.png?1533893961" alt="health img" /></div>
+                  </Col>
                 </div>
-              
-                <Col size="md-12">          
-                <h4> This app is a simple and easy to use platform for users to search and find recipes and all their delicacies. Not only that, but users will also be able to find out recipes of foods that will be tailored to their personal requirements such as allergies, vegetarian/non-vegetarian needs, and lifestyle choices.</h4>
+
+                <Col size="md-12">
+                  <ul style={{ fontSize: "25px", listStyle: "none" }}>
+                    <li >Welcome to a recipe finder that helps you find and save your favorite recipes. 
+                  </li>
+                    <br />
+                    <li>You can search for recipes based on specific search criteria. For example you can seach for a specific ingredient (tomato or chicken, etc.), a category (lunch or casserole, etc.) or even a dietary need (vegetarian or vegan, etc.).
+                      </li>
+                    <br />
+                    <li>You will also be able to create your own personal account to save your favorite recipes and you can even add a special note to each recipe to give it your own special twist!
+                    </li>
+
+                  </ul>
                 </Col>
               </div>
-              </Card>
+            </Card>
           </Row>
 
         </Container >
 
-      <Footer>
-      </Footer>
+        <Footer>
+        </Footer>
       </div >
 
     );

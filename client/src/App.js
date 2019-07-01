@@ -8,7 +8,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import LogOut from "./pages/LogOut";
 import AuthenticatedRoute from "./Components/AuthenticatedRoute";
-import Modal from "./Components/Modal";
+
 
 // if (localStorage.getItem('jwtToken')) {
 //   var user = setCurrentUser(localStorage.getItem('jwtToken')).payload;
