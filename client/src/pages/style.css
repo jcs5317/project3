@@ -3,11 +3,13 @@
 }
 
 h5 {
-    color: white;
+    color: black;
     text-align: center;
     
 }
-
+h4 {
+   color: rgb(3, 122, 39);
+}
 .modalHeader {
     background-color: #FF0000;
     text-align: center;
@@ -20,4 +22,8 @@ h5 {
 .textarea { 
     
     max-width: auto;
+   }
+
+   .save-btn {
+       float: right;
    }

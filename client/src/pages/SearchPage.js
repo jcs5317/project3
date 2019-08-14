@@ -10,7 +10,7 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
-import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
+import { CustomInput, FormGroup, } from 'reactstrap';
 
 class SearchPage extends Component {
   state = {
@@ -24,9 +24,9 @@ class SearchPage extends Component {
 
   getSavedRecipeLabels = () => {
     Actions.getSavedRecipeLabels()
-    .then(response => {
-      this.setState({savedItemLabels: response.data.labels});
-    })
+      .then(response => {
+        this.setState({ savedItemLabels: response.data.labels });
+      })
 
   }
 
@@ -47,26 +47,26 @@ class SearchPage extends Component {
 
     Actions.getRecipes(this.state.recipeSearch, this.state.healthLabels)
       .then(res => {
-      // DATA COMES  AS A 3D ARRAY (ARRAY WITH OBJS WITH NESTED OBJS [{{}}, {{}}]) 
-      // MAP OVER ARRAY AND CREATE NEW ARRAY OF JUST THE NESTED OBJ (WHICH IS THE RECIPE, WE DONT NEED THE OTHER TWO KEYS THEY ARE USELESS)
-      // ARRAY OR OBJ  [{}, {}] 
-      // MAP REMOVES STUFF WE DONT CARE ABOUT
-        let recipeData =  res.data.hits.map(function (a) {return a.recipe});
+        // DATA COMES  AS A 3D ARRAY (ARRAY WITH OBJS WITH NESTED OBJS [{{}}, {{}}]) 
+        // MAP OVER ARRAY AND CREATE NEW ARRAY OF JUST THE NESTED OBJ (WHICH IS THE RECIPE, WE DONT NEED THE OTHER TWO KEYS THEY ARE USELESS)
+        // ARRAY OR OBJ  [{}, {}] 
+        // MAP REMOVES STUFF WE DONT CARE ABOUT
+        let recipeData = res.data.hits.map(function (a) { return a.recipe });
 
-      // THEN COMPARE THE ARRAY OF RECIPE TITLE/LABLES (THIS.STATE.savedItemLabels) TO THE NEWLY CREATE ARRAY OF OBJS (recipeData)
-      // create a new array that doesnt include any object that has a recipe with a name in the savedItemLabels array
-       // we do this becasue we dont want to show the user recipes they have already saved. 
-      let recipes = recipeData.filter( (a) => {
+        // THEN COMPARE THE ARRAY OF RECIPE TITLE/LABLES (THIS.STATE.savedItemLabels) TO THE NEWLY CREATE ARRAY OF OBJS (recipeData)
+        // create a new array that doesnt include any object that has a recipe with a name in the savedItemLabels array
+        // we do this becasue we dont want to show the user recipes they have already saved. 
+        let recipes = recipeData.filter((a) => {
           return this.state.savedItemLabels.indexOf(a.label) === -1;
         });
-        
+
         // set state with the fileter array
-        this.setState({ recipes: recipes, searchBtn: "Search"})
+        this.setState({ recipes: recipes, searchBtn: "Search" })
       })
-      .then(()=>{
+      .then(() => {
         // update btn text from saved to default of save recipe 
         let saveBtns = document.getElementsByClassName("save-btn");
-        for(let i = 0; i < saveBtns.length; i++) {
+        for (let i = 0; i < saveBtns.length; i++) {
           saveBtns[i].textContent = "Save Recipe"
         }
       })
@@ -129,7 +129,7 @@ class SearchPage extends Component {
   render() {
     return (
       <div>
-        <Nav signedIn={true}/>
+        <Nav signedIn={true} />
         <Container>
           <Jumbotron />
           <br />
@@ -149,18 +149,18 @@ class SearchPage extends Component {
                       />
                     </Col>
                     <Col size="" >
-                    <FormGroup>
-          <CustomInput type="select" id="exampleCustomSelect" name="customSelect" select value={this.state.healthLabels} onChange={this.handleSelect}>
-            <option select value="">Health Selections</option>
-            <option>vegan</option>
-            <option>vegetarian</option>
-            <option>sugar-conscious</option>
-            <option>tree-nut-free</option>
-            <option>peanut-free</option>
-            <option>alcohol-free</option>
-          </CustomInput>
-        </FormGroup>
-                    
+                      <FormGroup>
+                        <CustomInput type="select" id="exampleCustomSelect" name="customSelect" select value={this.state.healthLabels} onChange={this.handleSelect}>
+                          <option select value="">Health Selections</option>
+                          <option>vegan</option>
+                          <option>vegetarian</option>
+                          <option>sugar-conscious</option>
+                          <option>tree-nut-free</option>
+                          <option>peanut-free</option>
+                          <option>alcohol-free</option>
+                        </CustomInput>
+                      </FormGroup>
+
                     </Col>
                     <Col size="xs-3 sm-2">
                       <Button
@@ -173,7 +173,7 @@ class SearchPage extends Component {
                     </Col>
                   </Row>
                   <Row>
-                    
+
                   </Row>
                 </Container>
               </form>
@@ -190,7 +190,7 @@ class SearchPage extends Component {
                 ) : (
                     <RecipeList>
                       {this.state.recipes.map((recipe, i) => {
-                      
+
                         return (
 
                           <RecipeListItem

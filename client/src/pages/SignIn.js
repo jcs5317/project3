@@ -100,6 +100,8 @@ class SignIn extends Component {
                                             placeholder="password"
                                             type="password"
                                             name="password"
+                                            minLength="6"
+                                            maxLength="16"
                                             value={this.state.password}
                                             onChange={this.handleChange}
                                         />

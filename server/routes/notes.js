@@ -58,7 +58,7 @@ router.get("getnotes/:id", function(req,res) {
 
 router.post("/postnotes/:id", function(req, res) {
     // Save the new note that gets posted to the Notes collection,
-    // then find an article from the req.params.id,
+    // then find an recipe from the req.params.id,
     // and update it's "note" property with the _id of the new note.
     console.log(req.body);
     console.log("xxxxxxx");
@@ -96,7 +96,7 @@ router.get("/getsinglenote/:id", function(req,res) {
     });
 });
 
-router.delete("/deletenote/:id", function(req,res) {
+router.delete("/deletenote/:id",passportJWTStrategy, function(req,res) {
     db.Notes.remove(
         {_id: req.params.id}
     )
@@ -112,9 +112,9 @@ router.delete("/deletenote/:id", function(req,res) {
 
 router.put("/returned/:id", function(req, res) {
     // Update the article's boolean "saved" status to 'false.'
-    db.Recipe.update(
+    db.Notes.update(
         {_id: req.params.id},
-        {saved: false}
+        {saved: true}
     )
     .then(function(result) {
         res.json(result);

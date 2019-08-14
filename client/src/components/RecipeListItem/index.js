@@ -13,7 +13,7 @@ const RecipeListItem = (props) =>{
               <img src={props.thumbnail} alt="recipes" />
             </Col>
             <Col size="xs-8 sm-8">
-              <h3>{props.title}</h3>
+              <h4>{props.title}</h4>
               <p>{(props.calories/props.servings).toFixed(2)} calories per serving</p>
               <p>Serves: {props.servings}</p>
               <ul>
@@ -24,7 +24,7 @@ const RecipeListItem = (props) =>{
                 <p>Caution: {props.cautions}</p>
               </ul>
                 <hr/>
-              <a rel="noreferrer noopener" target="_blank" href={props.href}>
+              <a rel="noreferrer noopener" target="_blank" href={props.href} style= {{float: "right"}}>
                 Go to recipe!
               </a>
               <br/>

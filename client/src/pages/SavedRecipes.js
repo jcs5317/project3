@@ -7,7 +7,7 @@ import API from "../utils/API";
 import Footer from "../Components/Footer";
 import Nav from "../Components/Nav";
 // import Modal from "../Components/Modal";
-import { Button, Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import {Modal as RModal, Label, Form, FormGroup, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import "../pages/style.css";
 import SaveBtn from "../Components/SaveBtn";
 import DeleteBtn from "../Components/DeleteBtn";
@@ -54,7 +54,7 @@ handleDeleteRecipe =(id) => {
   console.log(id)
   //console.log(event.target)
   API.deleteRecipe(id)
-    .then(res => this.loadRecipes())
+    .then(res => this.loadRecipe())
     .catch(err => console.log(err));
 };
 
@@ -84,14 +84,31 @@ handleDeleteRecipe =(id) => {
           alert("Something went wrong!")
         }
       })
-      .catch(err => alert("Recipe already saved!"));
+      .catch(err => alert("Note already saved!"));
   };
 
-  deleteNote = id => {
-    Actions.deleteNote  (id)
-      .then(res => console.log(res.status))
-      .catch(err => console.log(err));
+  handleDeleteNotes = (e) => {
+    this.toggle();
+    var btn = e.target
+    btn.textContent = "deleted"
+    var remove = {
+      body: this.state.body
+    }
+
+    Actions.saveNotes(remove)
+      .then((response) => {
+        if (response) {
+          alert("Note deleted")
+          // remove the save button from 
+          // this.props.history.push("/savedrecipes");
+        } else {
+          alert("Something went wrong!")
+        }
+      })
+      .catch(err => alert("Note already saved!"));
   };
+
+  
 
   
   render() {
@@ -136,7 +153,7 @@ handleDeleteRecipe =(id) => {
           </Row>
         </Container>
         <Footer />
-        <Button onClick={this.toggle}></Button>
+  
         <RModal isOpen={this.state.modal}>
           <ModalHeader className="modalHeader">
 

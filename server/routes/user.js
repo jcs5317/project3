@@ -66,11 +66,11 @@ router.post("/login", passportLocalStrategy, function(req, res) {
   res.json({ token: tokenizer(req.user) });
 });
 
-// router.get("/logout",  passportLocalStrategy,  function(req, res) {
-//   req.logout();
-//   req.session.destroy();
-//   res.redirect("/");
-// });
+router.get("/logout",  passportLocalStrategy,  function(req, res) {
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
+});
 
 
 
